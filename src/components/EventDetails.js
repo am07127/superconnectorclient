@@ -149,9 +149,9 @@ const EventDetails = () => {
           <img
             src={event.image}
             alt="Description"
-            style={{ width: '1100px', height: '380px', marginRight:'20px'}}
+            style={{ width: '68vw', height: '40vh', marginRight:'20px'}}
           />
-        <div className="bg-grey p-3" style={{ width: '400px', border: '1px solid #ccc', backgroundColor:'#d9d9d9', height:'380px', borderRadius:'10px' }}>
+        <div className="bg-grey p-3" style={{ width: '20vw', border: '1px solid #ccc', backgroundColor:'#d9d9d9', height:'40vh', borderRadius:'10px' }}>
           <p><strong>Location:</strong> {event.location}</p>
           <p><strong>Date:</strong> {event.date}</p>
           <p><strong>Category:</strong><span class="badge bg-dark" style={{marginLeft:'10px'}}>{event.category}</span></p>

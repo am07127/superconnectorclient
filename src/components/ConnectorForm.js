@@ -26,6 +26,13 @@ const ConnectorForm = () => {
     e.preventDefault();
     // You can perform actions with the form data here, like sending it to a server
     console.log('Form Data:', formData);
+
+    setFormData({
+        name: '',
+        companyName: '',
+        email: '',
+        contactNumber: '',
+      });
   };
 
   return (
@@ -152,13 +159,12 @@ const ConnectorForm = () => {
             className="form-control"
             id="contactNumber"
             name="contactNumber"
-            pattern="[0-9]{10}"
-            // placeholder="e.g., 1234567890"
+            pattern="[0-9]*"
             value={formData.contactNumber}
             onChange={handleChange}
             required
           />
-          <small className="text-muted">Please enter a 10-digit contact number.</small>
+          <small className="text-muted">Please enter digits only.</small>
         </div>
         
 

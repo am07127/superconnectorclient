@@ -4,6 +4,8 @@ import NavBar from "./components/Navbar";
 import Footer from "./components/footer";
 import Services from "./components/Services";
 import Events from "./components/events";
+import EventDetails from "./components/EventDetails";
+import ConnectorForm from "./components/ConnectorForm";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Services />} />
         <Route exact path="/events" element={<Events />} />
+        <Route exact path="/event/:eventID" element={<EventDetails/>} />
+        <Route exact path="/connectForm/:eventID" element={<ConnectorForm/>} />
       </Routes>
       <Footer />
     </div>

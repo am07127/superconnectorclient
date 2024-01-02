@@ -53,7 +53,6 @@ function Services() {
         data-bs-ride="carousel"
         style={{ maxHeight: "750px", overflow: "hidden" }}
       >
-        <div className="overlay"></div>
         <div className="carousel-inner carousel-fade">
           <div className="carousel-item active">
             <img
@@ -61,10 +60,10 @@ function Services() {
               className="d-block w-100"
               alt="..."
             />
+            <div className="carousel-overlay"></div>
             <div className="carousel-caption d-none d-md-block mb-5">
-              <h2>Meeting Image Caption</h2>
               <strong>
-                <p>Some additional description here.</p>
+                <h1><span className="light-orange">Personalized</span> Company Representation</h1>
               </strong>
             </div>
           </div>
@@ -74,10 +73,10 @@ function Services() {
               className="d-block w-100"
               alt="..."
             />
+            <div className="carousel-overlay"></div>
             <div className="carousel-caption d-none d-md-block mb-5">
-              <h2>Business Networking Caption</h2>
               <strong>
-                <p>Additional details about the image.</p>
+                <h1>Global Presence at <span className="light-orange">Networking Events</span></h1>
               </strong>
             </div>
           </div>
@@ -87,10 +86,10 @@ function Services() {
               className="d-block w-100"
               alt="..."
             />
+            <div className="carousel-overlay"></div>
             <div className="carousel-caption d-none d-md-block mb-5">
-              <h2>Corporate Image Caption</h2>
               <strong>
-                <p>More information about the corporate setting.</p>
+                <h1><span className='light-orange'>Representation</span> at Trade Shows and Conferences.</h1>
               </strong>
             </div>
           </div>
@@ -122,7 +121,7 @@ function Services() {
       </div>
 
       <div className="herobanner">
-        <div className="overlay  d-flex align-items-center justify-content-center mx-5">
+        <div className="overlay  d-flex align-items-center justify-content-center mx-5 p-4">
           <h5 className="text-white text-center" style={{ lineHeight: 1.2 }}>
             Super Connector represents companies on-floor at networking events
             and trade shows around the globe. Representation for the company is
@@ -150,10 +149,8 @@ function Services() {
               </div>
               <div>
                 <p className="text-center">
-                  We provide exceptional on-site networking assistance for
-                  individuals or organizations unable to physically attend
-                  global events and conferences. Our connectors are
-                  professionally trained individuals.
+                Super Connectors are trained experts with a deep well of industry knowledge, strategic insights, and remarkable networking skills, acting as the perfect replacement for people who are unable to attend these events. 
+
                 </p>
               </div>
             </div>
@@ -164,10 +161,8 @@ function Services() {
               </div>
               <div>
                 <p className="text-center">
-                  We provide exceptional on-site networking assistance for
-                  individuals or organizations unable to physically attend
-                  global events and conferences. Our connectors are
-                  professionally trained individuals.
+                Super Connectors provide assistance at booths, aiding in the initial setup and logistics, engaging with attendees, representing the company and maximizing presence and impact at an event.
+
                 </p>
               </div>
             </div>

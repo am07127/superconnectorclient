@@ -47,13 +47,13 @@ function Services() {
 
   return (
     <div>
-      {/* Carousel Section */}
       <div
         id="carouselExampleAutoplaying"
         className="carousel slide"
         data-bs-ride="carousel"
         style={{ maxHeight: "750px", overflow: "hidden" }}
       >
+        <div className="overlay"></div>
         <div className="carousel-inner carousel-fade">
           <div className="carousel-item active">
             <img
@@ -119,6 +119,18 @@ function Services() {
           ></span>
           <span className="visually-hidden">Next</span>
         </button>
+      </div>
+
+      <div className="herobanner">
+        <div className="overlay  d-flex align-items-center justify-content-center mx-5">
+          <h5 className="text-white text-center" style={{ lineHeight: 1.2 }}>
+            Super Connector represents companies on-floor at networking events
+            and trade shows around the globe. Representation for the company is
+            conducted by people who are expert relationship builders with high
+            levels of emotional intelligence and are also known as{" "}
+            <strong>"Super Connectors."</strong>
+          </h5>
+        </div>
       </div>
       <div className="services">
         <div ref={containerRef} className="container mt-3">

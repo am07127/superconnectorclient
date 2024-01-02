@@ -1,3 +1,16 @@
+.herobanner {
+    background-image: url('../../public/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 300px; /* Adjust the height as needed */
+   }
+   
+   .overlay {
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+    height: 100%;
+   }
+
+ 
  .services .container {
     opacity: 0;
     transform: translateY(50px);
@@ -15,6 +28,8 @@
     width: 100%
 }
 
+
+
 .card:hover {
     transform: scale(1.025);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
@@ -29,6 +44,12 @@
     background: #1b9ce3;
     animation: popBackground 0.3s ease-in
 }
+
+.card:hover .backgroundEffect .icon {
+    opacity: 1;
+    transform: translateY(0)
+}
+  
 
 @keyframes popBackground {
     0% {

@@ -2,6 +2,7 @@ import React from "react";
 import Eventcard from "./eventcard";
 import { useState } from "react";
 import Dropdown from "./dropdown";
+import "./Services.css";
 
 const events = [
   {
@@ -139,7 +140,9 @@ export default function Events() {
         <div
           className="bg-image p-5 text-center shadow-1-strong rounded mb-5"
           style={{
-            backgroundImage: `url('https://source.unsplash.com/1600x400/?event')`,
+            backgroundImage: `url(${process.env.PUBLIC_URL}/hero.jpg)`,
+            backgroundSize: "cover",
+            backgroundPosition: "center"
           }}
         >
           <h1 className="text-center text-light my-5 pt-5">Find your event</h1>

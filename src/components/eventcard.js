@@ -35,8 +35,6 @@ export default function Eventcard(props) {
         <p className="text-success" style={{ fontSize: "18px" }}>
           {event.category}
         </p>
-
-        <p className="card-text text-center">{event.description}</p>
       </div>
     </div>
   );

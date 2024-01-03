@@ -1,13 +1,9 @@
-.herobanner {
-    background-image: url('../../public/hero.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 300px; /* Adjust the height as needed */
-   }
+
    
    .overlay {
     background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
     height: 100%;
+    
    }
 
  
@@ -15,7 +11,20 @@
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.5s, transform 0.5s;
+
   }
+/* 
+  .goal-container  {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s, transform 0.5s;
+  } */
+
+  .services  {
+    background-color: rgba(135,206,250,0.8);
+  }
+
+  
   
   .services .show-columns {
     opacity: 1;
@@ -60,6 +69,10 @@
   z-index: 1; /* Ensure the overlay is above the image */
 }
 
+
+
+
+
 .carousel-caption {
     position: absolute;
     top: 50%;
@@ -79,6 +92,21 @@
   
   .light-orange {
     color: #ff8c00;
+  }
+
+  .content-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    padding: 50px;
+    
+  }
+
+  @media (max-width: 768px) {
+    .overlay {
+      position: relative;
+      padding: 20px;
+    }
   }
 
 @keyframes popBackground {

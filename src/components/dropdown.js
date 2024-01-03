@@ -1,6 +1,6 @@
 // Dropdown.js
 
-const Dropdown = ({ options, onChange }) => {
+const Dropdown = ({ options, onChange, name }) => {
   return (
     <div className="dropdown">
       <button
@@ -9,7 +9,7 @@ const Dropdown = ({ options, onChange }) => {
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
-        Select Category
+        Select {name}
       </button>
       <ul className="dropdown-menu dropdown-menu-dark">
         <li>

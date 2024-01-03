@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 function Services() {
   const containerRef = useRef(null);
   const secondRef = useRef(null);
+  const newRef = useRef(null);
 
   useEffect(() => {
     const containerObserver = new IntersectionObserver(
@@ -30,6 +31,17 @@ function Services() {
       { threshold: 0.5 } // Adjust the threshold as needed
     );
 
+    const thirdObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show-columns");
+          }
+        });
+      },
+      { threshold: 0.5 } // Adjust the threshold as needed
+    );
+
     if (containerRef.current) {
       containerObserver.observe(containerRef.current);
     }
@@ -38,15 +50,22 @@ function Services() {
       secondObserver.observe(secondRef.current);
     }
 
+    if (newRef.current) {
+      thirdObserver.observe(newRef.current);
+    }
+
     // Cleanup the observer on component unmount
     return () => {
       containerObserver.disconnect();
       secondObserver.disconnect();
+      thirdObserver.disconnect();
     };
   }, []);
 
   return (
     <div>
+
+      
       <div
         id="carouselExampleAutoplaying"
         className="carousel slide"
@@ -56,8 +75,8 @@ function Services() {
         <div className="carousel-inner carousel-fade">
           <div className="carousel-item active">
             <img
-              src="https://source.unsplash.com/1600x750/?meetings"
-              className="d-block w-100"
+              src={process.env.PUBLIC_URL + "carousel4.jpg"}
+              className="d-block w-100 img-fluid"
               alt="..."
             />
             <div className="carousel-overlay"></div>
@@ -69,8 +88,8 @@ function Services() {
           </div>
           <div className="carousel-item">
             <img
-              src="https://source.unsplash.com/1600x750/?business,networking"
-              className="d-block w-100"
+              src={process.env.PUBLIC_URL + "carousel1.jpg"}
+              className="d-block w-100 img-fluid"
               alt="..."
             />
             <div className="carousel-overlay"></div>
@@ -82,8 +101,8 @@ function Services() {
           </div>
           <div className="carousel-item">
             <img
-              src="https://source.unsplash.com/1600x750/?corporate"
-              className="d-block w-100"
+              src={process.env.PUBLIC_URL + "hero.jpg"}
+              className="d-block w-100 img-fluid"
               alt="..."
             />
             <div className="carousel-overlay"></div>
@@ -120,19 +139,33 @@ function Services() {
         </button>
       </div>
 
-      <div className="herobanner">
-        <div className="overlay  d-flex align-items-center justify-content-center mx-5 p-4">
-          <h5 className="text-white text-center" style={{ lineHeight: 1.2 }}>
+      <div ref={newRef} className="goal-container">
+        <div className="row no-gutters d-flex align-items-stretch">
+          <div className="col-md-6 h-100">
+            <div className="content-container">
+            <h1 className="text-center text-dark py-3" style={{borderBottom: '3px solid #000', paddingBottom:'0.5rem'}}>Our Goal</h1>
+            <h5 className="text-center" style={{lineHeight:2}}>
             Super Connector represents companies on-floor at networking events
             and trade shows around the globe. Representation for the company is
             conducted by people who are expert relationship builders with high
             levels of emotional intelligence and are also known as{" "}
             <strong>"Super Connectors."</strong>
-          </h5>
+            </h5>
+            </div>
+          </div>
+          <div className="col-md-6 h-100">
+            <img
+              src={process.env.PUBLIC_URL + "networkingclient3.webp"}
+              alt="..."
+              className="d-block w-100 img-fluid"
+            />
+          </div>
         </div>
       </div>
+      
+      
       <div className="services">
-        <div ref={containerRef} className="container mt-3">
+        <div ref={containerRef} className="container mt-3 pt-5">
           <div className="row">
             <h1 className="text-center text-dark py-3">Our Services</h1>
           </div>

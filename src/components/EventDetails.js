@@ -154,7 +154,7 @@ const EventDetails = () => {
         <div className="bg-grey p-3" style={{ width: '20vw', border: '1px solid #ccc', backgroundColor:'#d9d9d9', height:'40vh', borderRadius:'10px' }}>
           <p><strong>Location:</strong> {event.location}</p>
           <p><strong>Date:</strong> {event.date}</p>
-          <p><strong>Category:</strong><span class="badge bg-dark" style={{marginLeft:'10px'}}>{event.category}</span></p>
+          <p><strong>Category:</strong><span className="badge bg-dark" style={{marginLeft:'10px'}}>{event.category}</span></p>
         </div>
       </div>
       <p style={{marginLeft: '105px', marginTop: '20px'}}>{event.description}</p>

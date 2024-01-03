@@ -136,7 +136,8 @@ export default function Events() {
 
   return (
     <>
-      <div className="container mx-auto">
+      <div>
+        
         <div
           className="bg-image p-5 text-center shadow-1-strong rounded mb-5"
           style={{
@@ -145,7 +146,8 @@ export default function Events() {
             backgroundPosition: "center"
           }}
         >
-          <h1 className="text-center text-light my-5 pt-5">Find your event</h1>
+          
+          <h1 className="text-center text-light my-5 pt-5">FIND YOUR <span className="light-orange">EVENT</span></h1>
           <div className="container">
             <div className="row">
               <div className="col-12">
@@ -157,14 +159,14 @@ export default function Events() {
                     onChange={handleSearch}
                   />
                   <div className="input-group-append">
-                    <Dropdown options={categories} onChange={setSelected} />
+                    <Dropdown options={categories} name="Category" onChange={setSelected} />
                   </div>
                 </div>
               </div>
             </div>
             <div className="row">
               <div className="col-12">
-                <Dropdown options={months} onChange={setMonth} />
+                <Dropdown options={months} name="Month" onChange={setMonth} />
               </div>
             </div>
           </div>

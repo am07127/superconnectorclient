@@ -1,5 +1,6 @@
 import React from "react";
 import "./Services.css";
+import Events from "./events";
 
 import { useEffect, useRef } from "react";
 
@@ -64,8 +65,6 @@ function Services() {
 
   return (
     <div>
-
-      
       <div
         id="carouselExampleAutoplaying"
         className="carousel slide"
@@ -82,7 +81,10 @@ function Services() {
             <div className="carousel-overlay"></div>
             <div className="carousel-caption d-none d-md-block mb-5">
               <strong>
-                <h1><span className="light-orange">Personalized</span> Company Representation</h1>
+                <h1>
+                  <span className="white">Personalized</span> Company
+                  Representation
+                </h1>
               </strong>
             </div>
           </div>
@@ -95,8 +97,17 @@ function Services() {
             <div className="carousel-overlay"></div>
             <div className="carousel-caption d-none d-md-block mb-5">
               <strong>
-                <h1>Global Presence at <span className="light-orange">Networking Events</span></h1>
+                <h1>
+                  GLOBAL PRESENCE AT{" "}
+                  <span className="white">NETWORKING EVENTS</span>
+                </h1>
               </strong>
+              <button
+                type="button"
+                className="btn-transparent btn-lg"
+              >
+                BOOK A CONNECTOR
+              </button>
             </div>
           </div>
           <div className="carousel-item">
@@ -108,8 +119,17 @@ function Services() {
             <div className="carousel-overlay"></div>
             <div className="carousel-caption d-none d-md-block mb-5">
               <strong>
-                <h1><span className='light-orange'>Representation</span> at Trade Shows and Conferences.</h1>
+                <h1>
+                  <span className="white">Representation</span> at Trade Shows
+                  and Conferences.
+                </h1>
               </strong>
+              <button
+                type="button"
+                className="btn-transparent btn-lg"
+              >
+                Super Connector X Conferences
+              </button>
             </div>
           </div>
         </div>
@@ -139,63 +159,55 @@ function Services() {
         </button>
       </div>
 
-      <div ref={newRef} className="goal-container">
+      <div ref={newRef} id="aboutus" className="goal-container">
         <div className="row no-gutters d-flex align-items-stretch">
-          <div className="col-md-6 h-100">
-            <div className="content-container">
-            <h1 className="text-center text-dark py-3" style={{borderBottom: '3px solid #000', paddingBottom:'0.5rem'}}>Our Goal</h1>
-            <h5 className="text-center" style={{lineHeight:2}}>
-            Super Connector represents companies on-floor at networking events
-            and trade shows around the globe. Representation for the company is
-            conducted by people who are expert relationship builders with high
-            levels of emotional intelligence and are also known as{" "}
-            <strong>"Super Connectors."</strong>
+          <div className="content-container">
+            <h1 className="text-center text-dark py-3">About Us</h1>
+            <h5 className="text-center" style={{ lineHeight: 2 }}>
+              Super Connector represents companies on-floor at networking events
+              and trade shows around the globe. Representation for the company
+              is conducted by people who are expert relationship builders with
+              high levels of emotional intelligence and are also known as{" "}
+              <strong>"Super Connectors."</strong>
             </h5>
-            </div>
-          </div>
-          <div className="col-md-6 h-100">
-            <img
-              src={process.env.PUBLIC_URL + "networkingclient3.webp"}
-              alt="..."
-              className="d-block w-100 img-fluid"
-            />
           </div>
         </div>
       </div>
-      
-      
-      <div className="services">
+
+      <div className="services py-5" id="services">
         <div ref={containerRef} className="container mt-3 pt-5">
           <div className="row">
-            <h1 className="text-center text-dark py-3">Our Services</h1>
+            <h1 className="text-center py-3">Our Services</h1>
           </div>
         </div>
 
         {/* Services Section */}
         <div ref={secondRef} className="container py-3">
           <div className="row">
-            <div className="col-md-6 border-end border-4 border-dark">
+            <div className="col-md-6 border-end border-4 border-white">
               <div>
-                <h5 className="text-center text-dark py-3">
-                  On-Floor Networking
-                </h5>
+                <h5 className="text-center py-3">On-Floor Networking</h5>
               </div>
               <div>
                 <p className="text-center">
-                Super Connectors are trained experts with a deep well of industry knowledge, strategic insights, and remarkable networking skills, acting as the perfect replacement for people who are unable to attend these events. 
-
+                  Super Connectors are trained experts with a deep well of
+                  industry knowledge, strategic insights, and remarkable
+                  networking skills, acting as the perfect replacement for
+                  people who are unable to attend these events.
                 </p>
               </div>
             </div>
 
             <div className="col-md-6">
               <div>
-                <h5 className="text-center text-dark py-3">Booth Support</h5>
+                <h5 className="text-center py-3">Booth Support</h5>
               </div>
               <div>
-                <p className="text-center" >
-                Super Connectors provide assistance at booths, aiding in the initial setup and logistics, engaging with attendees, representing the company and maximizing presence and impact at an event.
-
+                <p className="text-center">
+                  Super Connectors provide assistance at booths, aiding in the
+                  initial setup and logistics, engaging with attendees,
+                  representing the company and maximizing presence and impact at
+                  an event.
                 </p>
               </div>
             </div>
@@ -204,6 +216,9 @@ function Services() {
       </div>
 
       {/* Additional content or sections can be added here */}
+      <div id="eventsection">
+        <Events />
+      </div>
     </div>
   );
 }

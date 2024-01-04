@@ -36,13 +36,29 @@ const ConnectorForm = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <h2 style={{marginTop:'200px', marginBottom: '30px'}}>Book a Connector</h2>
+    <div className="position-relative bg-image p-5 shadow-1-strong" style={{marginTop:'30px'}}>
+      <div
+        className="overlay"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: `url(${process.env.PUBLIC_URL}/hero.jpg)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: '0.7',
+        }}
+      ></div>
+    <div className="container mt-5" style={{backgroundColor: 'black', opacity: '0.7', borderRadius:'10px', marginTop:'290px', width:'50%', padding:'30px'}}>
+    <h2 style={{color:'white', fontSize: '5vh', textAlign:'center'}}>Book a Connector</h2>
+
       <form onSubmit={handleSubmit}>
-      <div className="container mt-4" style={{borderStyle:'solid', borderColor:'#1d31d3', marginBottom:'30px'}}>
+      <div className="container mt-4" style={{borderStyle:'solid', marginBottom:'30px'}}>
         <div className="row">
   <div className="col-md-4 mb-3">
-    <label htmlFor="eventName" className="form-label">
+    <label htmlFor="eventName" className="form-label" style={{color:'white', fontWeight:'bold', opacity:'1.5'}}>
       Event Name:
     </label>
     <input
@@ -63,7 +79,7 @@ const ConnectorForm = () => {
   </div>
 
   <div className="col-md-4 mb-3">
-    <label htmlFor="eventDate" className="form-label">
+    <label htmlFor="eventDate" className="form-label" style={{color:'white', fontWeight:'bold', opacity:'1.5'}}>
       Date:
     </label>
     <input
@@ -84,7 +100,7 @@ const ConnectorForm = () => {
   </div>
 
   <div className="col-md-4 mb-3">
-    <label htmlFor="eventLocation" className="form-label">
+    <label htmlFor="eventLocation" className="form-label" style={{color:'white', fontWeight:'bold', opacity:'1.5'}}>
       Event Location:
     </label>
     <input
@@ -106,7 +122,7 @@ const ConnectorForm = () => {
 </div>
 </div>
         <div className="mb-3">
-          <label htmlFor="name" className="form-label">
+          <label htmlFor="name" className="form-label" style={{color:'white', fontWeight:'bold', opacity:'1.5'}}>
             Name:
           </label>
           <input
@@ -121,7 +137,7 @@ const ConnectorForm = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="companyName" className="form-label">
+          <label htmlFor="companyName" className="form-label" style={{color:'white', fontWeight:'bold', opacity:'1.5'}}> 
             Company Name:
           </label>
           <input
@@ -136,7 +152,7 @@ const ConnectorForm = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="email" className="form-label">
+          <label htmlFor="email" className="form-label" style={{color:'white', fontWeight:'bold', opacity:'1.5'}}>
             Email:
           </label>
           <input
@@ -151,7 +167,7 @@ const ConnectorForm = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="contactNumber" className="form-label">
+          <label htmlFor="contactNumber" className="form-label" style={{color:'white', fontWeight:'bold', opacity:'1.5'}}>
             Contact Number:
           </label>
           <input
@@ -168,10 +184,12 @@ const ConnectorForm = () => {
         </div>
         
 
-        <button type="submit" className="btn btn-primary" style={{marginBottom:'130px',  backgroundColor:'#1d31d3'}}>
+        <button type="submit" className="btn btn-primary d-block mx-auto" style={{ backgroundColor:'#1d31d3', borderColor:'#1d31d3'}}>
           Submit
         </button>
       </form>
+    </div>
+    
     </div>
   );
 };

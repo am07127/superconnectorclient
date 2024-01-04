@@ -143,7 +143,7 @@ export default function Events() {
           style={{
             backgroundImage: `url(${process.env.PUBLIC_URL}/hero.jpg)`,
             backgroundSize: "cover",
-            backgroundPosition: "center"
+            backgroundPosition: "center",
           }}
         >
           

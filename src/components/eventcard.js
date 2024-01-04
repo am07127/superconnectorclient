@@ -32,7 +32,7 @@ export default function Eventcard(props) {
           <i className="fas fa-calendar-alt"></i> {event.date}
         </p>
 
-        <p className="text-success" style={{ fontSize: "18px" }}>
+        <p style={{ fontSize: "20px" , backgroundColor:'#1d31d3', color:'white', borderRadius:'5px'}}>
           {event.category}
         </p>
       </div>

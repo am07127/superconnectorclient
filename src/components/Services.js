@@ -193,7 +193,7 @@ function Services() {
                 <h5 className="text-center text-dark py-3">Booth Support</h5>
               </div>
               <div>
-                <p className="text-center">
+                <p className="text-center" >
                 Super Connectors provide assistance at booths, aiding in the initial setup and logistics, engaging with attendees, representing the company and maximizing presence and impact at an event.
 
                 </p>

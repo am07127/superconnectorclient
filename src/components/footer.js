@@ -8,28 +8,28 @@ function Footer() {
         <button
           type="button"
           className="btn btn-primary btn-lg btn-floating mx-2"
-          style={{backgroundColor: "54456b"}}
+          style={{backgroundColor: "#1d31d3", borderColor:'#1d31d3'}}
         >
           <i className="fab fa-facebook-f"></i>
         </button>
         <button
           type="button"
           className="btn btn-primary btn-lg btn-floating mx-2"
-          style={{backgroundColor: "54456b"}}
+          style={{backgroundColor: "#1d31d3", borderColor:'#1d31d3'}}
         >
           <i className="fab fa-youtube"></i>
         </button>
         <button
           type="button"
           className="btn btn-primary btn-lg btn-floating mx-2"
-          style={{backgroundColor: "54456b"}}
+          style={{backgroundColor: "#1d31d3", borderColor:'#1d31d3'}}
         >
           <i className="fab fa-instagram"></i>
         </button>
         <button
           type="button"
           className="btn btn-primary btn-lg btn-floating mx-2"
-          style={{backgroundColor: "54456b"}}
+          style={{backgroundColor: "#1d31d3", borderColor:'#1d31d3'}}
         >
           <i className="fab fa-twitter"></i>
         </button>

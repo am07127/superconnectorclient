@@ -7,6 +7,7 @@ import Events from "./components/events";
 import EventDetails from "./components/EventDetails";
 import ConnectorForm from "./components/ConnectorForm";
 import Login from "./components/login";
+import Conferences from "./components/Conferences";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Services />} />
         <Route exact path="/events" element={<Events />} />
+        {/* <Route exact path="/conferences" element={<Conferences/>} /> */}
         <Route exact path="/event/:eventID" element={<EventDetails/>} />
         <Route exact path="/connectForm/:eventID" element={<ConnectorForm/>} />
         <Route exact path="/login" element={<Login/>} />

@@ -1,6 +1,7 @@
 import React from "react";
 import "./Services.css";
 import Events from "./events";
+import Conferences from "./Conferences";
 
 import { useEffect, useRef } from "react";
 
@@ -218,6 +219,9 @@ function Services() {
       {/* Additional content or sections can be added here */}
       <div id="eventsection">
         <Events />
+      </div>
+      <div id="conferencesection">
+        <Conferences />
       </div>
     </div>
   );

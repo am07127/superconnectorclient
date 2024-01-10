@@ -23,6 +23,17 @@
   color: black;
 }
 
+.search-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.search-icon {
+  width: 18px;
+  height: 18px;
+}
+
  
  .services .container {
     opacity: 0;

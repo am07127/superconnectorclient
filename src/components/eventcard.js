@@ -16,10 +16,12 @@ export default function Eventcard(props) {
     //This form will also have related events
     //pass appropriate props to the event details page
   }
+  const myimage = "https://source.unsplash.com/1600x400/?"+event.category;
 
   return (
+    
     <div className="card">
-      <img src={event.image} className="card-img-top" alt="..."  onClick={selectEvent}/>
+      <img src={myimage}  className="card-img-top" alt="..."  onClick={selectEvent}/>
 
       <div className="card-body text-center">
         <h5 className="card-title text-center fw-bold">{event.name}</h5>

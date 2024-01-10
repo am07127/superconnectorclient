@@ -60,7 +60,7 @@ const ConnectorForm = () => {
         }}
       ></div>
       <div
-        className="container mt-5"
+        className="container mt-5 rounded"
         style={{
           backgroundColor: "black",
           opacity: "0.7",
@@ -93,11 +93,11 @@ const ConnectorForm = () => {
               padding: "20px",
             }}
           >
-            <h2
-              style={{ color: "white", fontSize: "5vh", textAlign: "center" }}
+            <h3
+              style={{ color: "white", textAlign: "center" }}
             >
               BOOK A CONNECTOR
-            </h2>
+            </h3>
             <div className="row">
               <div className="col-md-4 mb-3">
                 <label

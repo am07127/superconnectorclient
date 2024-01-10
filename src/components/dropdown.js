@@ -9,7 +9,7 @@ const Dropdown = ({ options, onChange, name }) => {
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
-        Select {name}
+        {name}
       </button>
       <ul className="dropdown-menu dropdown-menu-dark">
         <li>

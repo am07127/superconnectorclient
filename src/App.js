@@ -8,6 +8,7 @@ import EventDetails from "./components/EventDetails";
 import ConnectorForm from "./components/ConnectorForm";
 import Login from "./components/login";
 import Conferences from "./components/Conferences";
+import EventForm from "./components/EventForm";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route exact path="/event/:eventID" element={<EventDetails/>} />
         <Route exact path="/connectForm/:eventID" element={<ConnectorForm/>} />
         <Route exact path="/login" element={<Login/>} />
+        <Route exact path="/eventForm" element={<EventForm/>} />
       </Routes>
       <Footer />
     </div>

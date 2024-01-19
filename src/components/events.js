@@ -118,7 +118,7 @@ export default function Events() {
   const [month, setMonth] = useState(months[0]);
   const [category, setCategory] = useState(categories[0]);
   const [location, setLocation] = useState("");
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const inputRef = useRef();
   const host = "http://localhost:3000";
 
@@ -334,7 +334,7 @@ export default function Events() {
       </div>
       <div className="container my-3">
         <div className="row">
-          {events.map((event) => (
+          {events.filter((event)=> event.isApproved).map((event) => (
             <div className="col-md-3 my-2" key={event.id}>
               <Eventcard event={event} />
             </div>

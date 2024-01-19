@@ -16,7 +16,7 @@ export default function Eventcard(props) {
     //This form will also have related events
     //pass appropriate props to the event details page
   }
-  const myimage = "https://source.unsplash.com/1600x400/?"+event.category;
+  const myimage = "https://source.unsplash.com/550x400/?"+event.category;
 
   return (
     
@@ -31,7 +31,7 @@ export default function Eventcard(props) {
         </p>
 
         <p className="text-primary fst-italic" style={{ fontSize: "14px" }}>
-          <i className="fas fa-calendar-alt"></i> {event.date}
+          <i className="fas fa-calendar-alt"></i> {event.startDate}
         </p>
 
         <p style={{ fontSize: "20px" , backgroundColor:'#1d31d3', color:'white', borderRadius:'5px'}}>

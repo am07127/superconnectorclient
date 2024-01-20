@@ -7,10 +7,10 @@ const EventForm = () => {
     eventName: "",
     website: "",
     category: "",
-    companyName: "",
-    email: "",
-    title: "",
-    date:""
+    venue: "",
+    location: "",
+    startDate:"",
+    endDate:""
   });
 
   
@@ -23,43 +23,69 @@ const EventForm = () => {
     }));
   };
 
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const maxCategories = 3;
+
+  const handleCheckboxChange = (category) => {
+    if (selectedCategories.includes(category)) {
+      setSelectedCategories(selectedCategories.filter((cat) => cat !== category));
+      console.log("yay",selectedCategories);
+
+    } else {
+      if (selectedCategories.length < maxCategories) {
+        setSelectedCategories([...selectedCategories, category]);
+        console.log(selectedCategories);
+
+      } else {
+        console.log('Maximum 3 categories allowed');
+      }
+    }
+  };
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Done");
+  
     try {
-      // Your API endpoint for adding events
       const apiUrl = 'http://localhost:3000/api/events/addevent';
   
-      // Make a POST request to the API with the form data
+      const sortedCategories = selectedCategories.slice().sort();
+      const categoriesString = sortedCategories.join(',');
+  
+      const updatedFormData = {
+        ...formData,
+        category: categoriesString,
+      };
+  
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          // Add any additional headers if needed
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(updatedFormData),
       });
   
-      // Check if the request was successful (status code 2xx)
       if (response.ok) {
         console.log('Event added successfully!');
-        
-        // Reset the form data after successful submission
+  
         setFormData({
           eventName: "",
           website: "",
           category: "",
-          companyName: "",
-          email: "",
-          title: "",
-          date: "",
+          venue: "",
+          location: "",
+          startDate:"",
+          endDate:""
         });
+  
+        setSelectedCategories([]);
       } else {
         console.error('Failed to add event:', response.statusText);
-        console.log("didnt work")
+        console.log(updatedFormData);
+        console.log("didnt work");
       }
     } catch (error) {
-      console.log("Error")
       console.error('Error:', error.message);
     }
   };
@@ -121,18 +147,6 @@ const EventForm = () => {
           </div>
   
           <div className="col-md-6 mb-3">
-            <label htmlFor="category" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}>Category:</label>
-            <input type="text" className="form-control" id="category" name="category" value={formData.category} onChange={handleChange} required />
-          </div>
-        </div>
-  
-        <div className="row">
-          <div className="col-md-6 mb-3">
-            <label htmlFor="title" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}>Title:</label>
-            <input type="text" className="form-control" id="title" name="title" value={formData.title} onChange={handleChange} required />
-          </div>
-  
-          <div className="col-md-6 mb-3">
             <label htmlFor="website" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}>Website:</label>
             <input type="text" className="form-control" id="website" name="website" value={formData.website} onChange={handleChange} required />
           </div>
@@ -140,25 +154,128 @@ const EventForm = () => {
   
         <div className="row">
         <div className="col-md-6 mb-3">
-            <label htmlFor="companyName" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}>Company Name:</label>
-            <input type="text" className="form-control" id="companyName" name="companyName" value={formData.companyName} onChange={handleChange} required />
+            <label htmlFor="venue" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}>Venue:</label>
+            <input type="text" className="form-control" id="venue" name="venue" value={formData.venue} onChange={handleChange} required />
           </div>
   
           <div className="col-md-6 mb-3">
-            <label htmlFor="email" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}>Email:</label>
-            <input type="email" className="form-control" id="email" name="email" value={formData.email} onChange={handleChange} required />
+            <label htmlFor="location" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}>Location:</label>
+            <input type="location" className="form-control" id="location" name="location" value={formData.location} onChange={handleChange} required />
           </div>
         </div>
   
         <div className="row">
           <div className="col-md-6 mb-3">
-            <label htmlFor="date" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5"}}>Date:</label>
-            <input type="date" className="form-control" id="date" name="date" value={formData.date} onChange={handleChange} required />
+            <label htmlFor="startDate" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5"}}>Start Date:</label>
+            <input type="date" className="form-control" id="startDate" name="startDate" value={formData.startDate} onChange={handleChange} required />
           </div>
-  
-          
+
+          <div className="col-md-6 mb-3">
+            <label htmlFor="endDate" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5"}}>End Date:</label>
+            <input type="date" className="form-control" id="endDate" name="endDate" value={formData.endDate} onChange={handleChange} required />
+          </div>
         </div>
-  
+          
+          <label>
+        <input
+          type="checkbox"
+          value="Books"
+          checked={selectedCategories.includes('Books')}
+          onChange={() => handleCheckboxChange('Books')}
+          disabled={selectedCategories.length === maxCategories && !selectedCategories.includes('Books')}
+        />
+        Books
+      </label>
+
+      <label>
+        <input
+          type="checkbox"
+          value="Cars"
+          checked={selectedCategories.includes('Cars')}
+          onChange={() => handleCheckboxChange('Cars')}
+          disabled={selectedCategories.length === maxCategories && !selectedCategories.includes('Cars')}
+        />
+        Cars
+      </label>
+
+      <label>
+        <input
+          type="checkbox"
+          value="Fashion"
+          checked={selectedCategories.includes('Fashion')}
+          onChange={() => handleCheckboxChange('Fashion')}
+          disabled={selectedCategories.length === maxCategories && !selectedCategories.includes('Fashion')}
+        />
+        Fashion
+      </label>
+
+      <label>
+      <input
+          type="checkbox"
+          value="Food"
+          checked={selectedCategories.includes('Food')}
+          onChange={() => handleCheckboxChange('Food')}
+          disabled={selectedCategories.length === maxCategories && !selectedCategories.includes('Food')}
+        />
+        Food
+      </label>
+
+      <label>
+        <input
+          type="checkbox"
+          value="Movies"
+          checked={selectedCategories.includes('Movies')}
+          onChange={() => handleCheckboxChange('Movies')}
+          disabled={selectedCategories.length === maxCategories && !selectedCategories.includes('Movies')}
+        />
+        Movies
+      </label>
+
+      <label>
+        <input
+          type="checkbox"
+          value="Music"
+          checked={selectedCategories.includes('Music')}
+          onChange={() => handleCheckboxChange('Music')}
+          disabled={selectedCategories.length === maxCategories && !selectedCategories.includes('Music')}
+        />
+        Music
+      </label>
+
+      <label>
+      <input
+          type="checkbox"
+          value="Startups"
+          checked={selectedCategories.includes('Startups')}
+          onChange={() => handleCheckboxChange('Startups')}
+          disabled={selectedCategories.length === maxCategories && !selectedCategories.includes('Startups')}
+        />
+        Startups
+      </label>
+
+      <label>
+        <input
+          type="checkbox"
+          value="Tech"
+          checked={selectedCategories.includes('Tech')}
+          onChange={() => handleCheckboxChange('Tech')}
+          disabled={selectedCategories.length === maxCategories && !selectedCategories.includes('Tech')}
+        />
+        Tech
+      </label>
+
+      <label>
+        <input
+          type="checkbox"
+          value="Western"
+          checked={selectedCategories.includes('Western')}
+          onChange={() => handleCheckboxChange('Western')}
+          disabled={selectedCategories.length === maxCategories && !selectedCategories.includes('Western')}
+        />
+        Western
+      </label>
+          
+          
         <button
             type="submit"
             className="btn btn-primary d-block mx-auto"

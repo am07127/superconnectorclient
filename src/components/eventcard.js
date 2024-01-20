@@ -7,6 +7,27 @@ export default function Eventcard(props) {
   const { event } = props;
   const navigate = useNavigate();
 
+  const convertBufferToBase64 = (buffer) => {
+    let binary = '';
+    const bytes = new Uint8Array(buffer);
+    const len = bytes.byteLength;
+
+    for (let i = 0; i < len; i++) {
+        binary += String.fromCharCode(bytes[i]);
+    }
+
+    return window.btoa(binary);
+};
+
+var myimage = "";
+  try {
+    const base64Flag = `data:${event.image.contentType};base64,`;
+    const imageStr = convertBufferToBase64(event.image.data.data);
+    myimage = base64Flag + imageStr;
+  }catch(err){
+    myimage = "https://source.unsplash.com/550x400/?"+event.category;
+  }
+
   const selectEvent = () => {
     console.log("Selected Event");
     console.log("NO");
@@ -16,12 +37,11 @@ export default function Eventcard(props) {
     //This form will also have related events
     //pass appropriate props to the event details page
   }
-  const myimage = "https://source.unsplash.com/550x400/?"+event.category;
 
   return (
     
     <div className="card">
-      <img src={myimage}  className="card-img-top" alt="..."  onClick={selectEvent}/>
+      <img src={myimage}  className="card-img-top" alt="..."  onClick={selectEvent} style={{maxHeight:"200px"}}/>
 
       <div className="card-body text-center">
         <h5 className="card-title text-center fw-bold">{event.name}</h5>

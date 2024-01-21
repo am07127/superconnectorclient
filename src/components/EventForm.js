@@ -14,9 +14,24 @@ const EventForm = () => {
   });
 
   
+  function validateDateRange(startDate, endDate) {
+    const startDateTime = new Date(startDate).getTime();
+    const endDateTime = new Date(endDate).getTime();
+  
+    // Check if either date is invalid
+    if (isNaN(startDateTime) || isNaN(endDateTime)) {
+      // Invalid date format, handle accordingly
+      return false;
+    }
+  
+    return endDateTime > startDateTime;
+  }
 
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
+    // Validate input format (City, Country)
+
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -47,6 +62,28 @@ const EventForm = () => {
     e.preventDefault();
     console.log("Done");
   
+    // Convert location to lowercase
+    const lowercasedLocation = formData.location.toLowerCase();
+  
+    // Validate input format (City, Country)
+    const regex = /^[a-zA-Z\s]+,\s[a-zA-Z\s]+$/;
+    const isCityCountryValid = regex.test(lowercasedLocation);
+  
+    if (!isCityCountryValid) {
+      alert('Please enter the location in the format City, Country.');
+      return; // Stop further execution if the format is not valid
+    }
+
+    if (selectedCategories.length===0) {
+      alert('Please choose atleast one category.');
+      return; // Stop further execution if the format is not valid
+    }
+    
+    if (!validateDateRange(formData.startDate, formData.endDate)){
+      alert('Please enter valid dates.');
+      return; // Stop further execution if the format is not valid
+    }
+
     try {
       const apiUrl = 'http://localhost:3000/api/events/addevent';
   
@@ -55,6 +92,7 @@ const EventForm = () => {
   
       const updatedFormData = {
         ...formData,
+        location: lowercasedLocation, // Update the location field with lowercase value
         category: categoriesString,
       };
   
@@ -75,8 +113,8 @@ const EventForm = () => {
           category: "",
           venue: "",
           location: "",
-          startDate:"",
-          endDate:""
+          startDate: "",
+          endDate: ""
         });
   
         setSelectedCategories([]);
@@ -90,7 +128,7 @@ const EventForm = () => {
     }
   };
   
-
+  
   return (
     <div
       className="position-relative bg-image p-5 shadow-1-strong"
@@ -159,11 +197,20 @@ const EventForm = () => {
           </div>
   
           <div className="col-md-6 mb-3">
-            <label htmlFor="location" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}>Location:</label>
-            <input type="location" className="form-control" id="location" name="location" value={formData.location} onChange={handleChange} required />
-          </div>
+  <label htmlFor="location" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}>Location:</label>
+  <input
+    type="text"
+    className="form-control"
+    id="location"
+    name="location"
+    placeholder="City, Country"
+    value={formData.location}
+    onChange={handleChange}
+    required
+  />
+</div>
         </div>
-  
+
         <div className="row">
           <div className="col-md-6 mb-3">
             <label htmlFor="startDate" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5"}}>Start Date:</label>
@@ -175,105 +222,28 @@ const EventForm = () => {
             <input type="date" className="form-control" id="endDate" name="endDate" value={formData.endDate} onChange={handleChange} required />
           </div>
         </div>
+        <label htmlFor="location" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5", textAlign:"center" }}>Category:</label>
           
-          <label>
-        <input
-          type="checkbox"
-          value="Books"
-          checked={selectedCategories.includes('Books')}
-          onChange={() => handleCheckboxChange('Books')}
-          disabled={selectedCategories.length === maxCategories && !selectedCategories.includes('Books')}
-        />
-        Books
-      </label>
-
-      <label>
-        <input
-          type="checkbox"
-          value="Cars"
-          checked={selectedCategories.includes('Cars')}
-          onChange={() => handleCheckboxChange('Cars')}
-          disabled={selectedCategories.length === maxCategories && !selectedCategories.includes('Cars')}
-        />
-        Cars
-      </label>
-
-      <label>
-        <input
-          type="checkbox"
-          value="Fashion"
-          checked={selectedCategories.includes('Fashion')}
-          onChange={() => handleCheckboxChange('Fashion')}
-          disabled={selectedCategories.length === maxCategories && !selectedCategories.includes('Fashion')}
-        />
-        Fashion
-      </label>
-
-      <label>
-      <input
-          type="checkbox"
-          value="Food"
-          checked={selectedCategories.includes('Food')}
-          onChange={() => handleCheckboxChange('Food')}
-          disabled={selectedCategories.length === maxCategories && !selectedCategories.includes('Food')}
-        />
-        Food
-      </label>
-
-      <label>
-        <input
-          type="checkbox"
-          value="Movies"
-          checked={selectedCategories.includes('Movies')}
-          onChange={() => handleCheckboxChange('Movies')}
-          disabled={selectedCategories.length === maxCategories && !selectedCategories.includes('Movies')}
-        />
-        Movies
-      </label>
-
-      <label>
-        <input
-          type="checkbox"
-          value="Music"
-          checked={selectedCategories.includes('Music')}
-          onChange={() => handleCheckboxChange('Music')}
-          disabled={selectedCategories.length === maxCategories && !selectedCategories.includes('Music')}
-        />
-        Music
-      </label>
-
-      <label>
-      <input
-          type="checkbox"
-          value="Startups"
-          checked={selectedCategories.includes('Startups')}
-          onChange={() => handleCheckboxChange('Startups')}
-          disabled={selectedCategories.length === maxCategories && !selectedCategories.includes('Startups')}
-        />
-        Startups
-      </label>
-
-      <label>
-        <input
-          type="checkbox"
-          value="Tech"
-          checked={selectedCategories.includes('Tech')}
-          onChange={() => handleCheckboxChange('Tech')}
-          disabled={selectedCategories.length === maxCategories && !selectedCategories.includes('Tech')}
-        />
-        Tech
-      </label>
-
-      <label>
-        <input
-          type="checkbox"
-          value="Western"
-          checked={selectedCategories.includes('Western')}
-          onChange={() => handleCheckboxChange('Western')}
-          disabled={selectedCategories.length === maxCategories && !selectedCategories.includes('Western')}
-        />
-        Western
-      </label>
+        <div className="row">
+          {[
+            'Books', 'Cars', 'Fashion',
+            'Food', 'Movies', 'Music',
+            'Startups', 'Tech', 'Western',
+          ].map((category, index) => (
+            <div key={index} className="col-md-4 mb-3">
+              <label>
+                <input
+                  type="checkbox"
+                  value={category}
+                  checked={selectedCategories.includes(category)}
+                  onChange={() => handleCheckboxChange(category)}
+                  disabled={selectedCategories.length === maxCategories && !selectedCategories.includes(category)}
+                />
+                <span style={{ color: 'white', opacity: '0.9', marginLeft:'10px' }}>{category}</span>
+              </label>
+            </div>
+          ))}
+        </div>
           
           
         <button

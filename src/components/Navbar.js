@@ -1,7 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
 
 const NavBar = () => {
+  const location = useLocation();
+
+  const isHomePage = location.pathname === "/";
+
   return (
     <div>
       <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
@@ -36,24 +40,52 @@ const NavBar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#eventsection">
-                  Events
-                </a>
+              {isHomePage ? (
+                  <a className="nav-link" href="#eventsection">
+                    Events
+                  </a>
+                ) : (
+                  // If on a separate page, navigate to home and use a hash link
+                  <Link className="nav-link" to="/#eventsection">
+                    Events
+                  </Link>
+                )}
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#conferencesection">
-                  Conferences
-                </a>
+              {isHomePage ? (
+                  <a className="nav-link" href="#conferencesection">
+                    Conferences
+                  </a>
+                ) : (
+                  // If on a separate page, navigate to home and use a hash link
+                  <Link className="nav-link" to="/#conferencesection">
+                    Conferences
+                  </Link>
+                )}
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#services">
-                  Services
-                </a>
+              {isHomePage ? (
+                  <a className="nav-link" href="#services">
+                    Services
+                  </a>
+                ) : (
+                  // If on a separate page, navigate to home and use a hash link
+                  <Link className="nav-link" to="/#services">
+                    Services
+                  </Link>
+                )}
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#aboutus">
-                  About Us
-                </a>
+              {isHomePage ? (
+                  <a className="nav-link" href="#aboutus">
+                    About Us
+                  </a>
+                ) : (
+                  // If on a separate page, navigate to home and use a hash link
+                  <Link className="nav-link" to="/#aboutus">
+                    About Us
+                  </Link>
+                )}
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/">

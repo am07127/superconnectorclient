@@ -87,26 +87,6 @@ const NavBar = () => {
                   </Link>
                 )}
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/">
-                  Health
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/">
-                  Science
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/">
-                  Sports
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/">
-                  Technology
-                </Link>
-              </li>
             </ul>
           </div>
         </div>

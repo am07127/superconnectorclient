@@ -98,7 +98,9 @@ const ConnectorForm = () => {
             >
               BOOK A CONNECTOR
             </h3>
-            <div className="row">
+            
+          </div>
+          <div className="row">
               <div className="col-md-4 mb-3">
                 <label
                   htmlFor="eventName"
@@ -174,7 +176,6 @@ const ConnectorForm = () => {
                 />
               </div>
             </div>
-          </div>
           <div className="row">
             <div className="col-md-6 mb-3">
               <label
@@ -300,7 +301,6 @@ const ConnectorForm = () => {
               </select>
             </div>
           </div>
-
           <button
             type="submit"
             className="btn btn-primary d-block mx-auto"

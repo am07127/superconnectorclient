@@ -5,38 +5,10 @@ function Footer() {
   return (
     <div>
       <footer
-        className="text-center text-lg-start text-white"
+        className="text-center text-lg-start text-white pt-4"
         style={{backgroundColor: "#1c2331"}}
       >
-        <section
-          className="d-flex justify-content-between p-4"
-          style={{backgroundColor: "#07064d"}}
-        >
-          <div className="me-5">
-            <span>Get connected with us on social networks:</span>
-          </div>
-
-          <div>
-            <a href="" className="text-white me-4">
-              <i className="fab fa-facebook-f"></i>
-            </a>
-            <a href="" className="text-white me-4">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="" className="text-white me-4">
-              <i className="fab fa-google"></i>
-            </a>
-            <a href="" className="text-white me-4">
-              <i className="fab fa-instagram"></i>
-            </a>
-            <a href="" className="text-white me-4">
-              <i className="fab fa-linkedin"></i>
-            </a>
-            <a href="" className="text-white me-4">
-              <i className="fab fa-github"></i>
-            </a>
-          </div>
-        </section>
+        
 
         <section className="">
           <div className="container text-center text-md-start mt-5">
@@ -51,34 +23,6 @@ function Footer() {
                   Here you can use rows and columns to organize your footer
                   content. Lorem ipsum dolor sit amet, consectetur adipisicing
                   elit.
-                </p>
-              </div>
-
-              <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                <h6 className="text-uppercase fw-bold">Products</h6>
-                <hr
-                  className="mb-4 mt-0 d-inline-block mx-auto"
-                  style={{width: "60px", backgroundColor: "#7c4dff", height: "2px"}}
-                />
-                <p>
-                  <a href="#!" className="text-white">
-                    MDBootstrap
-                  </a>
-                </p>
-                <p>
-                  <a href="#!" className="text-white">
-                    MDWordPress
-                  </a>
-                </p>
-                <p>
-                  <a href="#!" className="text-white">
-                    BrandFlow
-                  </a>
-                </p>
-                <p>
-                  <a href="#!" className="text-white">
-                    Bootstrap Angular
-                  </a>
                 </p>
               </div>
 
@@ -137,10 +81,32 @@ function Footer() {
           className="text-center p-3"
           style={{backgroundColor: "#07064d"}}
         >
-          © 2020 Copyright:
-          <a className="text-white" href="https://mdbootstrap.com/">
-            MDBootstrap.com
-          </a>
+          <section
+          className="d-flex justify-content-between p-4"
+          style={{backgroundColor: "#07064d"}}
+        >
+          <div className="me-5">
+            <span>Get connected with us on social networks:</span>
+          </div>
+
+          <div>
+            <a href="" className="text-white me-4">
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a href="" className="text-white me-4">
+              <i className="fab fa-twitter"></i>
+            </a>
+            <a href="" className="text-white me-4">
+              <i className="fab fa-google"></i>
+            </a>
+            <a href="" className="text-white me-4">
+              <i className="fab fa-instagram"></i>
+            </a>
+            <a href="" className="text-white me-4">
+              <i className="fab fa-linkedin"></i>
+            </a>
+          </div>
+        </section>
         </div>
       </footer>
     </div>

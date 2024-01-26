@@ -1,0 +1,20 @@
+/* EventForm.css */
+/* Add this CSS to handle responsiveness of category checkboxes */
+.category-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .category-col {
+    flex: 0 0 calc(33.33% - 10px);
+    margin-bottom: 10px;
+  }
+  
+  /* Specify one-third width for each category on smaller screens */
+  @media (max-width: 767px) {
+    .category-col {
+      flex: 0 0 calc(33.33% - 10px);
+    }
+  }
+  

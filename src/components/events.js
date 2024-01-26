@@ -1,6 +1,7 @@
 import React from "react";
 import Eventcard from "./eventcard";
 import { useState, useEffect, useRef } from "react";
+
 import { Navigate, useNavigate } from "react-router";
 import _ from "lodash";
 import Dropdown from "./dropdown";
@@ -39,6 +40,8 @@ export default function Events() {
   const [month, setMonth] = useState(months[0]);
   const [category, setCategory] = useState(categories[0]);
   const [location, setLocation] = useState("");
+  const [hasMoreEvents, setHasMoreEvents] = useState(true);
+
   const [page, setPage] = useState(0);
   const inputRef = useRef();
   const host = "http://localhost:3000";
@@ -90,6 +93,12 @@ export default function Events() {
     setPage(page + 1);
     const data = await res.json();
     setEvents((events) => [...events, ...data.docs]);
+  
+    // Check if there are more events
+    if (data.docs.length === 0) {
+      setHasMoreEvents(false);
+    }
+  
     setLoading(false);
   };
 
@@ -226,7 +235,7 @@ export default function Events() {
                       onClick={handlefinalsearch}
                     >
                       <svg
-                        class="search-icon"
+                        className="search-icon"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 512 512"
                       >
@@ -275,10 +284,15 @@ export default function Events() {
           </div>
         ) : (
           <div className="text-center">
-            <button className="btn btn-primary" onClick={fetchmoreevents}>
-              Load More
-            </button>
-          </div>
+  <button
+    className="btn btn-primary"
+    onClick={fetchmoreevents}
+    disabled={!hasMoreEvents}
+  >
+    {hasMoreEvents ? "Load More" : "No More Events"}
+  </button>
+</div>
+
         )}
       </div>
     </>

@@ -5,19 +5,24 @@ const NavBar = () => {
   const location = useLocation();
 
   const isHomePage = location.pathname === "/";
-
+  const handleLogoClick = () => {
+    // If on the home page, scroll to the top
+    if (isHomePage) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
   return (
     <div>
       <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+      <div className="container-fluid">
+      <Link className="navbar-brand" to="/" onClick={handleLogoClick}>
             <img
               src={process.env.PUBLIC_URL + "/sc logo 3.png"}
               alt="Bootstrap"
               width="40"
               height="60"
             />
-          </a>
+          </Link>
           <Link className="navbar-brand" to="/">
             Super Connector
           </Link>

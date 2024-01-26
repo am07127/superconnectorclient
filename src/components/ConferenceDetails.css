@@ -1,0 +1,52 @@
+/* Add these styles to ConferencesDetails.css */
+
+.conference-details-container {
+    margin-top: 100px;
+    margin-left: 60px;
+    margin-right: 60px;
+  }
+  
+  .responsive-image {
+    width: 100%;
+    height: auto; /* Allow the height to adjust according to the aspect ratio */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .my-4 {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .separator {
+    margin-top: 5px;
+    border: 1px solid rgba(33, 37, 41, 1);
+    background-color: rgba(33, 37, 41, 1);
+    display: block;
+  }
+  
+
+  
+  .description {
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 767px) {
+    .event-details-container {
+      margin: 20px;
+    }
+  }
+
+  
+  @media (max-width: 767px) {
+    .event-details-container {
+      width: 100%;
+    }
+  }
+  
+  

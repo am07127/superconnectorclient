@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
 import "./scrollbar.css";
 
-const ConnectorForm = () => {
+const GenConnector = () => {
   const [formData, setFormData] = useState({
+    eventName: "",
     firstname: "",
     lastname: "",
     selection: "",
@@ -12,10 +12,6 @@ const ConnectorForm = () => {
     contactNumber: "",
   });
 
-  const location = useLocation();
-  const { state } = location;
-  const { event } = state;
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -23,7 +19,6 @@ const ConnectorForm = () => {
       [name]: value,
     }));
   };
-  const date = `${event.startDate} - ${event.endDate}`;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,13 +26,13 @@ const ConnectorForm = () => {
     console.log("Form Data:", formData);
 
     setFormData({
-      firstname: "",
-      lastname: "",
-      companyName: "",
-      email: "",
-      contactNumber: "",
-      selection: "",
-
+        eventName: "",
+        firstname: "",
+        lastname: "",
+        selection: "",
+        companyName: "",
+        email: "",
+        contactNumber: "",
     });
   };
 
@@ -102,80 +97,44 @@ const ConnectorForm = () => {
             
           </div>
           <div className="row">
-              <div className="col-md-4 mb-3">
-                <label
-                  htmlFor="eventName"
-                  className="form-label"
-                  style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}
-                >
-                  Event Name:
-                </label>
-                <input
-                  className="form-control"
-                  id="eventName"
-                  type="text"
-                  value={event.name}
-                  disabled
-                  style={{
-                    backgroundColor: "#f8f9fa",
-                    color: "#495057",
-                    padding: "0.375rem 0.75rem",
-                    fontSize: "1rem",
-                    border: "1px solid #ced4da",
-                    borderRadius: "0.25rem",
-                  }}
-                />
-              </div>
+          <div className="col-md-6 mb-3">
+            <label
+              htmlFor="eventName"
+              className="form-label"
+              style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}
+            >
+              Event Name:
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="eventName"
+              name="eventName"
+              value={formData.eventName}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-              <div className="col-md-4 mb-3">
-                <label
-                  htmlFor="eventDate"
-                  className="form-label"
-                  style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}
-                >
-                  Date:
-                </label>
-                <input
-                  className="form-control"
-                  id="eventDate"
-                  type="text"
-                  value={date}
-                  disabled
-                  style={{
-                    backgroundColor: "#f8f9fa",
-                    color: "#495057",
-                    padding: "0.375rem 0.75rem",
-                    fontSize: "1rem",
-                    border: "1px solid #ced4da",
-                    borderRadius: "0.25rem",
-                  }}
-                />
-              </div>
 
-              <div className="col-md-4 mb-3">
-                <label
-                  htmlFor="eventLocation"
-                  className="form-label"
-                  style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}
-                >
-                  Event Location:
-                </label>
-                <input
-                  className="form-control"
-                  id="eventLocation"
-                  type="text"
-                  value={event.location}
-                  disabled
-                  style={{
-                    backgroundColor: "#f8f9fa",
-                    color: "#495057",
-                    padding: "0.375rem 0.75rem",
-                    fontSize: "1rem",
-                    border: "1px solid #ced4da",
-                    borderRadius: "0.25rem",
-                  }}
-                />
-              </div>
+              <div className="col-md-6 mb-3">
+            <label
+              htmlFor="companyName"
+              className="form-label"
+              style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}
+            >
+              Company Name:
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="companyName"
+              name="companyName"
+              value={formData.companyName}
+              onChange={handleChange}
+              required
+            />
+          </div>
             </div>
           <div className="row">
             <div className="col-md-6 mb-3">
@@ -217,24 +176,7 @@ const ConnectorForm = () => {
             </div>
           </div>
 
-          <div className="mb-3">
-            <label
-              htmlFor="companyName"
-              className="form-label"
-              style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}
-            >
-              Company Name:
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="companyName"
-              name="companyName"
-              value={formData.companyName}
-              onChange={handleChange}
-              required
-            />
-          </div>
+          
           <div className="row">
             <div className="col-md-6">
               <label
@@ -315,4 +257,4 @@ const ConnectorForm = () => {
   );
 };
 
-export default ConnectorForm;
+export default GenConnector;

@@ -1,6 +1,7 @@
 import React from "react";
 import "./Services.css";
 import Events from "./events";
+import { useNavigate } from "react-router";
 import Conferences from "./Conferences";
 
 import { useEffect, useRef } from "react";
@@ -9,7 +10,15 @@ function Services() {
   const containerRef = useRef(null);
   const secondRef = useRef(null);
   const newRef = useRef(null);
+  const navigate = useNavigate();
 
+  const openConnector = () => {
+    console.log("Selected Event form");
+    //implement logic to load event details page with booth support and book a connector forms
+    navigate(`/genConnect`);
+    //This form will also have related events
+    //pass appropriate props to the event details page
+  };
   useEffect(() => {
     const containerObserver = new IntersectionObserver(
       (entries) => {
@@ -21,7 +30,7 @@ function Services() {
       },
       { threshold: 0.5 } // Adjust the threshold as needed
     );
-
+      
     const secondObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -105,6 +114,7 @@ function Services() {
               </strong>
               <button
                 type="button"
+                onClick={openConnector}
                 className="btn-transparent btn-lg"
               >
                 BOOK A CONNECTOR

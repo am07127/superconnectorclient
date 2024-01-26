@@ -1,0 +1,34 @@
+.event-details-container .row {
+  margin-top: 20px; /* Adjust this value based on your preference for spacing */
+}
+
+.custom-bg-grey {
+  background-color: #d9d9d9;
+  margin: 0; /* You can adjust the margin as needed */
+  border-radius: 10px;
+  min-height: 40vh;
+}
+
+/* Responsive styles */
+@media (max-width: 767px) {
+  .event-details-container .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .event-details-container .col-lg-8,
+  .event-details-container .col-lg-4 {
+    width: 100%;
+    margin-bottom: 20px; /* Adjust this value based on your preference for spacing */
+  }
+}
+
+@media (min-width: 768px) {
+  .event-details-container .col-lg-8 {
+    width: 70%;
+  }
+
+  .event-details-container .col-lg-4 {
+    width: 30%;
+  }
+}

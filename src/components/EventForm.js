@@ -1,16 +1,35 @@
 import React, { useState,useEffect } from "react";
 // import { useLocation } from "react-router-dom";
 import "./scrollbar.css";
+import "./EventForm.css";
+const countries = [
+  "USA",
+  "UK",
+  "UAE",
+  "Canada",
+  "Japan",
+  "France",
+  "China",
+  "Germany",
+  "Italy",
+  "India",
+  "Romania",
+  "Ireland",
+  "Netherlands"
 
+];
 const EventForm = () => {
   const [formData, setFormData] = useState({
     eventName: "",
     website: "",
     category: "",
     venue: "",
-    location: "",
+    city: "",
+    country:"",
     startDate:"",
-    endDate:""
+    endDate:"",
+    extra:"",
+    location:""
   });
   useEffect(() => {
     // Scroll to the top of the page after the component is mounted
@@ -27,7 +46,7 @@ const EventForm = () => {
       return false;
     }
   
-    return endDateTime > startDateTime;
+    return endDateTime >= startDateTime;
   }
 
   
@@ -65,18 +84,21 @@ const EventForm = () => {
     e.preventDefault();
     console.log("Done");
   
-    // Convert location to lowercase
-    const lowercasedLocation = formData.location.toLowerCase();
+    // // Convert location to lowercase
+    // const lowercasedLocation = formData.location.toLowerCase();
   
-    // Validate input format (City, Country)
-    const regex = /^[a-zA-Z\s]+,\s[a-zA-Z\s]+$/;
-    const isCityCountryValid = regex.test(lowercasedLocation);
+    // // Validate input format (City, Country)
+    // const regex = /^[a-zA-Z\s]+,\s[a-zA-Z\s]+$/;
+    // const isCityCountryValid = regex.test(lowercasedLocation);
   
-    if (!isCityCountryValid) {
-      alert('Please enter the location in the format City, Country.');
-      return; // Stop further execution if the format is not valid
-    }
+    // if (!isCityCountryValid) {
+    //   alert('Please enter the location in the format City, Country.');
+    //   return; // Stop further execution if the format is not valid
+    // }
 
+    const capitalizedCity = formData.city.charAt(0).toUpperCase() + formData.city.slice(1);
+
+    const locate = `${capitalizedCity}, ${formData.country}`;
     if (selectedCategories.length===0) {
       alert('Please choose atleast one category.');
       return; // Stop further execution if the format is not valid
@@ -95,7 +117,7 @@ const EventForm = () => {
   
       const updatedFormData = {
         ...formData,
-        location: lowercasedLocation, // Update the location field with lowercase value
+        // location: locate,
         category: categoriesString,
       };
   
@@ -111,13 +133,15 @@ const EventForm = () => {
         console.log('Event added successfully!');
   
         setFormData({
-          eventName: "",
-          website: "",
+          ebsite: "",
           category: "",
           venue: "",
-          location: "",
-          startDate: "",
-          endDate: ""
+          city: "",
+          country:"",
+          startDate:"",
+          endDate:"",
+          extra:"",
+          location:""
         });
   
         setSelectedCategories([]);
@@ -177,8 +201,9 @@ const EventForm = () => {
             overflowY: "auto",
           }}
         >
-                  <div className="container" style={{ borderStyle: "solid", marginBottom: "20px", padding: "20px" }}>
+                  <div className="container" style={{ borderStyle: "solid", marginBottom: "20px", padding: "15px" }}>
           <h3 style={{ color: "white", textAlign: "center" }}>ADD AN EVENT</h3>
+          <p style={{ color: "white", textAlign: "center" }}>Fill this form to have your event showcased on the Super Connector website.</p>
         </div>
   
         <div className="row">
@@ -200,17 +225,49 @@ const EventForm = () => {
           </div>
   
           <div className="col-md-6 mb-3">
-  <label htmlFor="location" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}>City:</label>
+  <label htmlFor="city" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}>City:</label>
   <input
     type="text"
     className="form-control"
-    id="location"
-    name="location"
-    value={formData.location}
+    id="city"
+    name="city"
+    value={formData.city}
     onChange={handleChange}
     required
   />
 </div>
+        </div>
+        <div className="row">
+            <div className="col-md-6 mb-3ٍ">
+              <label
+                htmlFor="country"
+                className="form-label"
+                style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}
+              >
+                Country:
+              </label>
+              <select
+  className="form-select"
+  id="country"
+  name="country"
+  value={formData.country}
+  onChange={handleChange}
+  required
+>
+  <option value="">Select a country</option>
+  {countries.map((country, index) => (
+    <option key={index} value={country}>
+      {country}
+    </option>
+  ))}
+</select>
+
+            </div>
+
+            <div className="col-md-6 mb-3">
+            <label htmlFor="extra" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}>Others:</label>
+            <input type="text" className="form-control" id="extra" name="extra" value={formData.extra} onChange={handleChange}/>
+          </div>
         </div>
 
         <div className="row">
@@ -225,27 +282,28 @@ const EventForm = () => {
           </div>
         </div>
         <label htmlFor="location" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5", textAlign:"center" }}>Category:</label>
-          
-        <div className="row">
-          {[
-            'Books', 'Cars', 'Fashion',
-            'Food', 'Movies', 'Music',
-            'Startups', 'Tech', 'Western',
-          ].map((category, index) => (
-            <div key={index} className="col-md-4 mb-3">
-              <label>
-                <input
-                  type="checkbox"
-                  value={category}
-                  checked={selectedCategories.includes(category)}
-                  onChange={() => handleCheckboxChange(category)}
-                  disabled={selectedCategories.length === maxCategories && !selectedCategories.includes(category)}
-                />
-                <span style={{ color: 'white', opacity: '0.9', marginLeft:'10px' }}>{category}</span>
-              </label>
-            </div>
-          ))}
-        </div>
+           
+<div className="category-row">
+  {[
+    'Books', 'Cars', 'Fashion',
+    'Food', 'Movies', 'Music',
+    'Startups', 'Tech', 'Others',
+  ].map((category, index) => (
+    <div key={index} className="category-col mb-3">
+      <label>
+        <input
+          type="checkbox"
+          value={category}
+          checked={selectedCategories.includes(category)}
+          onChange={() => handleCheckboxChange(category)}
+          disabled={selectedCategories.length === maxCategories && !selectedCategories.includes(category)}
+        />
+        <span style={{ color: 'white', opacity: '0.9', marginLeft: '10px' }}>{category}</span>
+      </label>
+    </div>
+  ))}
+</div>
+
           
           
         <button

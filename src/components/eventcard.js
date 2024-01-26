@@ -2,7 +2,6 @@ import React from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./Services.css";
 import { Navigate, useNavigate } from "react-router";
-
 export default function Eventcard(props) {
   const { event } = props;
   const navigate = useNavigate();
@@ -34,6 +33,7 @@ export default function Eventcard(props) {
     console.log("Event ID:", event.id);
     //implement logic to load event details page with booth support and book a connector forms
     navigate(`/event/${event.id}`, { state: { event } });
+    
     //This form will also have related events
     //pass appropriate props to the event details page
   };

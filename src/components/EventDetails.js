@@ -12,6 +12,7 @@ const EventDetails = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     // Function to fetch related events from the backend API
     if (event) {
     const fetchRelatedEvents = async () => {

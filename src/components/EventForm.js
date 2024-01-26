@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState,useEffect } from "react";
+// import { useLocation } from "react-router-dom";
 import "./scrollbar.css";
 
 const EventForm = () => {
@@ -12,7 +12,10 @@ const EventForm = () => {
     startDate:"",
     endDate:""
   });
-
+  useEffect(() => {
+    // Scroll to the top of the page after the component is mounted
+    window.scrollTo(0, 0);
+  }, []); 
   
   function validateDateRange(startDate, endDate) {
     const startDateTime = new Date(startDate).getTime();
@@ -197,13 +200,12 @@ const EventForm = () => {
           </div>
   
           <div className="col-md-6 mb-3">
-  <label htmlFor="location" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}>Location:</label>
+  <label htmlFor="location" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}>City:</label>
   <input
     type="text"
     className="form-control"
     id="location"
     name="location"
-    placeholder="City, Country"
     value={formData.location}
     onChange={handleChange}
     required

@@ -12,7 +12,8 @@ import EventForm from "./components/EventForm";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" >
+      
       <NavBar />
       <Routes>
         <Route exact path="/" element={<Services />} />

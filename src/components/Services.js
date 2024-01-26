@@ -30,7 +30,7 @@ function Services() {
       },
       { threshold: 0.5 } // Adjust the threshold as needed
     );
-      
+
     const secondObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -81,24 +81,8 @@ function Services() {
         data-bs-ride="carousel"
         style={{ maxHeight: "750px", overflow: "hidden" }}
       >
-        <div className="carousel-inner carousel-fade">
+        <div className="carousel-inner">
           <div className="carousel-item active">
-            <img
-              src={process.env.PUBLIC_URL + "carousel4.jpg"}
-              className="d-block w-100 img-fluid"
-              alt="..."
-            />
-            <div className="carousel-overlay"></div>
-            <div className="carousel-caption d-none d-md-block mb-5">
-              <strong>
-                <h1>
-                  <span className="white">Personalized</span> Company
-                  Representation
-                </h1>
-              </strong>
-            </div>
-          </div>
-          <div className="carousel-item">
             <img
               src={process.env.PUBLIC_URL + "carousel1.jpg"}
               className="d-block w-100 img-fluid"
@@ -121,53 +105,7 @@ function Services() {
               </button>
             </div>
           </div>
-          <div className="carousel-item">
-            <img
-              src={process.env.PUBLIC_URL + "hero.jpg"}
-              className="d-block w-100 img-fluid"
-              alt="..."
-            />
-            <div className="carousel-overlay"></div>
-            <div className="carousel-caption d-none d-md-block mb-5">
-              <strong>
-                <h1>
-                  <span className="white">Representation</span> at Trade Shows
-                  and Conferences.
-                </h1>
-              </strong>
-              <button
-                type="button"
-                className="btn-transparent btn-lg"
-              >
-                Super Connector X Conferences
-              </button>
-            </div>
-          </div>
         </div>
-        <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleAutoplaying"
-          data-bs-slide="prev"
-        >
-          <span
-            className="carousel-control-prev-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleAutoplaying"
-          data-bs-slide="next"
-        >
-          <span
-            className="carousel-control-next-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Next</span>
-        </button>
       </div>
 
       <div ref={newRef} id="aboutus" className="goal-container">
@@ -196,10 +134,15 @@ function Services() {
         <div ref={secondRef} className="container py-3">
           <div className="row">
             <div className="col-md-6 border-end border-4 border-white">
-              <div>
+              <div
+                style={{
+                  maxWidth: "450px",
+                  marginLeft: "50px",
+                  marginRight: "50px",
+                  lineHeight: 2,
+                }}
+              >
                 <h5 className="text-center py-3">On-Floor Networking</h5>
-              </div>
-              <div>
                 <p className="text-center">
                   Super Connectors are trained experts with a deep well of
                   industry knowledge, strategic insights, and remarkable
@@ -210,10 +153,15 @@ function Services() {
             </div>
 
             <div className="col-md-6">
-              <div>
+              <div
+                style={{
+                  maxWidth: "450px",
+                  marginLeft: "100px",
+                  marginRight: "50px",
+                  lineHeight: 2,
+                }}
+              >
                 <h5 className="text-center py-3">Booth Support</h5>
-              </div>
-              <div>
                 <p className="text-center">
                   Super Connectors provide assistance at booths, aiding in the
                   initial setup and logistics, engaging with attendees,

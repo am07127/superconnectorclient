@@ -238,36 +238,44 @@ const EventForm = () => {
 </div>
         </div>
         <div className="row">
-            <div className="col-md-6 mb-3ٍ">
-              <label
-                htmlFor="country"
-                className="form-label"
-                style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}
-              >
-                Country:
-              </label>
-              <select
-  className="form-select"
-  id="country"
-  name="country"
-  value={formData.country}
-  onChange={handleChange}
-  required
->
-  <option value="">Select a country</option>
-  {countries.map((country, index) => (
-    <option key={index} value={country}>
-      {country}
-    </option>
-  ))}
-</select>
+        <div className="col-md-6 mb-3">
+  <label htmlFor="country" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}>
+    Country:
+  </label>
+  <select
+    className="form-select"
+    id="country"
+    name="country"
+    value={formData.country}
+    onChange={handleChange}
+    // Set required attribute based on whether "Others" is filled
+    required={!formData.extra}
+  >
+    <option value="">Select a country</option>
+    {countries.map((country, index) => (
+      <option key={index} value={country}>
+        {country}
+      </option>
+    ))}
+  </select>
+</div>
 
-            </div>
+<div className="col-md-6 mb-3">
+  <label htmlFor="extra" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}>
+    Others:
+  </label>
+  <input
+    type="text"
+    className="form-control"
+    id="extra"
+    name="extra"
+    value={formData.extra}
+    onChange={handleChange}
+    // Set required attribute based on whether country is selected
+    required={!formData.country}
+  />
+</div>
 
-            <div className="col-md-6 mb-3">
-            <label htmlFor="extra" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}>Others:</label>
-            <input type="text" className="form-control" id="extra" name="extra" value={formData.extra} onChange={handleChange}/>
-          </div>
         </div>
 
         <div className="row">

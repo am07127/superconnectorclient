@@ -51,7 +51,7 @@ const NavBar = () => {
                   </a>
                 ) : (
                   // If on a separate page, navigate to home and use a hash link
-                  <Link className="nav-link" to="/#eventsection">
+                  <Link className="nav-link" to="/#eventsection" >
                     Events
                   </Link>
                 )}
@@ -63,7 +63,7 @@ const NavBar = () => {
                   </a>
                 ) : (
                   // If on a separate page, navigate to home and use a hash link
-                  <Link className="nav-link" to="/#conferencesection">
+                  <Link className="nav-link" to="/#conferencesection" >
                     Conferences
                   </Link>
                 )}

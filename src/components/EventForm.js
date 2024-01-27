@@ -52,12 +52,27 @@ const EventForm = () => {
   
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // Validate input format (City, Country)
-
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  
+    if (name === "extra") {
+      // If the "Others" input is filled, disable the country select
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+        country: "",
+      }));
+    } else if (name === "country") {
+      // If a country is selected, clear the "Others" input
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+        extra: "",
+      }));
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
 
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -83,22 +98,20 @@ const EventForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Done");
-  
-    // // Convert location to lowercase
-    // const lowercasedLocation = formData.location.toLowerCase();
-  
-    // // Validate input format (City, Country)
-    // const regex = /^[a-zA-Z\s]+,\s[a-zA-Z\s]+$/;
-    // const isCityCountryValid = regex.test(lowercasedLocation);
-  
-    // if (!isCityCountryValid) {
-    //   alert('Please enter the location in the format City, Country.');
-    //   return; // Stop further execution if the format is not valid
-    // }
 
     const capitalizedCity = formData.city.charAt(0).toUpperCase() + formData.city.slice(1);
 
-    const locate = `${capitalizedCity}, ${formData.country}`;
+    // const locate = `${capitalizedCity}, ${formData.country}`;
+
+      let locate;
+      if (formData.extra) {
+        // If "Others" input is filled, concatenate it with the city
+        const capitalizedCountry = formData.extra.charAt(0).toUpperCase() + formData.extra.slice(1);        
+        locate = `${capitalizedCity}, ${capitalizedCountry}`;
+      } else {
+        // If country is selected, concatenate it with the city
+        locate = `${capitalizedCity}, ${formData.country}`;
+      }
     if (selectedCategories.length===0) {
       alert('Please choose atleast one category.');
       return; // Stop further execution if the format is not valid
@@ -117,7 +130,7 @@ const EventForm = () => {
   
       const updatedFormData = {
         ...formData,
-        // location: locate,
+        location: locate,
         category: categoriesString,
       };
   
@@ -133,15 +146,16 @@ const EventForm = () => {
         console.log('Event added successfully!');
   
         setFormData({
-          ebsite: "",
-          category: "",
-          venue: "",
-          city: "",
-          country:"",
-          startDate:"",
-          endDate:"",
-          extra:"",
-          location:""
+          eventName: "",
+        website: "",
+        category: "",
+        venue: "",
+        city: "",
+        country:"",
+        startDate:"",
+        endDate:"",
+        extra:"",
+        location:""
         });
   
         setSelectedCategories([]);

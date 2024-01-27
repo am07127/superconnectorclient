@@ -110,7 +110,7 @@ const EventForm = () => {
     }
 
     try {
-      const apiUrl = 'http://localhost:3000/api/events/addevent';
+      const apiUrl = 'https://super-connector.onrender.com/api/events/addevent';
   
       const sortedCategories = selectedCategories.slice().sort();
       const categoriesString = sortedCategories.join(',');

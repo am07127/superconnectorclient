@@ -44,7 +44,7 @@ export default function Events() {
 
   const [page, setPage] = useState(0);
   const inputRef = useRef();
-  const host = "http://localhost:3000";
+  const host = "https://super-connector.onrender.com";
 
   const navigate = useNavigate();
 

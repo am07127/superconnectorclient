@@ -7,7 +7,7 @@ const ConferencesDetails = () => {
   const [relevantEvents, setRelevantEvents] = useState([]);
   const location = useLocation();
   const { state } = location;
-  const host = "http://localhost:3000";
+  const host = "https://super-connector.onrender.com";
   const { event } = state || {};
   useEffect(() => {
     window.scrollTo(0, 0);

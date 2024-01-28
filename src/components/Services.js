@@ -156,7 +156,7 @@ function Services() {
               <div
                 style={{
                   maxWidth: "450px",
-                  marginLeft: "100px",
+                  marginLeft: "50px",
                   marginRight: "50px",
                   lineHeight: 2,
                 }}

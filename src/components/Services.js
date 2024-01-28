@@ -89,7 +89,7 @@ function Services() {
               alt="..."
             />
             <div className="carousel-overlay"></div>
-            <div className="carousel-caption d-none d-md-block mb-5">
+            <div className="carousel-caption d-block d-sm-block mb-5">
               <strong>
                 <h1>
                   GLOBAL PRESENCE AT{" "}

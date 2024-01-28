@@ -136,6 +136,16 @@
       position: relative;
       padding: 20px;
     }
+
+    .carousel-caption {
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: translate(0, 0);
+      z-index: 1; /* Ensure the captions appear above the overlay */
+      color: #fff; /* Set the caption text color */
+    }
+  
   }
 
 @keyframes popBackground {

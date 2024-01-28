@@ -140,7 +140,7 @@ export default function Events() {
       <div
         className="modal fade"
         id="exampleModal"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
@@ -246,14 +246,14 @@ export default function Events() {
                 </div>
                 <button
                   type="button"
-                  className="btn btn-primary mx-2"
+                  className="btn btn-dark mx-2"
                   onClick={openAddEvent}
                 >
                   Add event
                 </button>
                 <button
                   type="button"
-                  className="btn btn-primary mx-2"
+                  className="btn btn-dark mx-2"
                   data-bs-toggle="modal"
                   data-bs-target="#exampleModal"
                 >
@@ -269,7 +269,7 @@ export default function Events() {
           {events
             .filter((event) => event.isApproved)
             .map((event) => (
-              <div className="col-md-3 my-2" key={event.id}>
+              <div className="col-md-3 my-2" key={event._id}>
                 <Eventcard event={event} />
               </div>
             ))}
@@ -285,7 +285,7 @@ export default function Events() {
         ) : (
           <div className="text-center">
   <button
-    className="btn btn-primary"
+    className="btn btn-dark"
     onClick={fetchmoreevents}
     disabled={!hasMoreEvents}
   >

@@ -63,8 +63,9 @@ export default function Eventcard(props) {
 
         <div className="row justify-content-center">
           {event.category.split(",").map((category, index) => (
-            <div className="col-4" key={index}>
-              <span className="badge bg-secondary me-1">{category}</span>
+            console.log(category),
+            <div className="col-lg-4 col-md-6 col-sm-12 mb-3" key={index}>
+              <span className="badge bg-secondary me-1 mb-1">{category.trim()}</span>
             </div>
           ))}
 

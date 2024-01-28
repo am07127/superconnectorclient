@@ -33,7 +33,7 @@ const ConnectorForm = () => {
 
     
     try {
-      const apiUrl = 'http://localhost:3000/api/connectors/addconnector';
+      const apiUrl = 'https://super-connector.onrender.com/api/connectors/addconnector';
   
       const eventname = event.name;
       const updatedFormData = {

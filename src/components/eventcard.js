@@ -31,6 +31,7 @@ export default function Eventcard(props) {
     console.log("Selected Event");
     console.log("NO");
     console.log("Event ID:", event._id);
+    console.log("This is the wb site", event.website);
     //implement logic to load event details page with booth support and book a connector forms
     navigate(`/event/${event._id}`, { state: { event } });
     

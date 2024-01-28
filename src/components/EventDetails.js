@@ -81,6 +81,7 @@ const EventDetails = () => {
   </div>
 
   <p style={{ marginTop: '20px' }}>{event.description}</p>
+  <a style={{ marginTop: '20px', marginRight:'5px' }} href={event.website} target="_blank" rel="noreferrer">Learn More</a>
   <button type="button" className="btn btn-primary mr-2" style={{ backgroundColor: '#1d31d3' }} onClick={openConnectform}>Book a Connector</button>
   
   <h1 className="text-center text-dark py-3" style={{ marginTop: '30px' }}>

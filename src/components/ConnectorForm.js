@@ -4,6 +4,7 @@ import "./scrollbar.css";
 
 const ConnectorForm = () => {
   const [formData, setFormData] = useState({
+    eventName: "",
     firstname: "",
     lastname: "",
     selection: "",
@@ -25,21 +26,53 @@ const ConnectorForm = () => {
   };
   const date = `${event.startDate} - ${event.endDate}`;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // You can perform actions with the form data here, like sending it to a server
     console.log("Form Data:", formData);
 
-    setFormData({
-      firstname: "",
-      lastname: "",
-      companyName: "",
-      email: "",
-      contactNumber: "",
-      selection: "",
+    
+    try {
+      const apiUrl = 'http://localhost:3000/api/connectors/addconnector';
+  
+      const eventname = event.name;
+      const updatedFormData = {
+        ...formData,
+        eventName: eventname
+      };
+  
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedFormData),
+      });
+  
+      if (response.ok) {
+        alert('Connector added successfully!');
+  
+        setFormData({
+      
+          firstname: "",
+          lastname: "",
+          companyName: "",
+          email: "",
+          contactNumber: "",
+          selection: "",
+    
+        });
 
-    });
+      } else {
+        console.error('Failed to add connector:', response.statusText);
+        console.log(updatedFormData);
+        console.log("didnt work");
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+    }
   };
+  
 
   return (
     <div

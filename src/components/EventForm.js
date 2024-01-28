@@ -49,7 +49,19 @@ const EventForm = () => {
     return endDateTime >= startDateTime;
   }
 
-  
+  const capitalizeEachWord = (inputString) => {
+    // Split the input string into an array of words
+    const words = inputString.split(' ');
+
+    // Capitalize the first letter of each word
+    const capitalizedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));
+
+    // Join the words back together into a single string
+    const resultString = capitalizedWords.join(' ');
+
+    return resultString;
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
   
@@ -99,14 +111,14 @@ const EventForm = () => {
     e.preventDefault();
     console.log("Done");
 
-    const capitalizedCity = formData.city.charAt(0).toUpperCase() + formData.city.slice(1);
-
+    const capitalizedCity = capitalizeEachWord(formData.city);
+    const capitalizedEvent = capitalizeEachWord(formData.eventName);
     // const locate = `${capitalizedCity}, ${formData.country}`;
 
       let locate;
       if (formData.extra) {
         // If "Others" input is filled, concatenate it with the city
-        const capitalizedCountry = formData.extra.charAt(0).toUpperCase() + formData.extra.slice(1);        
+        const capitalizedCountry = capitalizeEachWord(formData.extra);     
         locate = `${capitalizedCity}, ${capitalizedCountry}`;
       } else {
         // If country is selected, concatenate it with the city
@@ -131,6 +143,7 @@ const EventForm = () => {
       const updatedFormData = {
         ...formData,
         location: locate,
+        eventName: capitalizedEvent,
         category: categoriesString,
       };
   
@@ -143,7 +156,7 @@ const EventForm = () => {
       });
   
       if (response.ok) {
-        console.log('Event added successfully!');
+        alert('Event added successfully!');
   
         setFormData({
           eventName: "",

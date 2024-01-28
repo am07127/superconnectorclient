@@ -12,6 +12,19 @@ const GenConnector = () => {
     contactNumber: "",
   });
 
+  const capitalizeEachWord = (inputString) => {
+    // Split the input string into an array of words
+    const words = inputString.split(' ');
+
+    // Capitalize the first letter of each word
+    const capitalizedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));
+
+    // Join the words back together into a single string
+    const resultString = capitalizedWords.join(' ');
+
+    return resultString;
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -20,22 +33,49 @@ const GenConnector = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can perform actions with the form data here, like sending it to a server
-    console.log("Form Data:", formData);
+    const capitalizedEvent = capitalizeEachWord(formData.eventName);
 
-    setFormData({
-        eventName: "",
-        firstname: "",
-        lastname: "",
-        selection: "",
-        companyName: "",
-        email: "",
-        contactNumber: "",
-    });
+    try {
+      const apiUrl = 'http://localhost:3000/api/connectors/addconnector';
+  
+      const updatedFormData = {
+        ...formData,
+        eventName: capitalizedEvent
+      };
+  
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedFormData),
+      });
+  
+      if (response.ok) {
+        alert('Connector added successfully!');
+  
+        setFormData({
+          eventName: "",
+          firstname: "",
+          lastname: "",
+          companyName: "",
+          email: "",
+          contactNumber: "",
+          selection: "",
+    
+        });
+
+      } else {
+        console.error('Failed to add connector:', response.statusText);
+        console.log(updatedFormData);
+        console.log("didnt work");
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+    }
   };
-
   return (
     <div
       className="position-relative bg-image p-5 shadow-1-strong"

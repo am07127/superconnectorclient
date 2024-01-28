@@ -35,8 +35,8 @@ const EventDetails = () => {
 
   const openConnectform = () => {
     console.log('Selected Connector form');
-    console.log('Event ID:', event.id);
-    navigate(`/connectForm/${event.id}`, { state: { event } });
+    console.log('Event ID:', event._id);
+    navigate(`/connectForm/${event._id}`, { state: { event } });
   };
   
   if (!event) {

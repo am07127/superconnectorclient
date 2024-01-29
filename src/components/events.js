@@ -33,13 +33,30 @@ const categories = [
   "Western",
 ];
 
+const countries = [
+  "USA",
+  "UK",
+  "UAE",
+  "Canada",
+  "Japan",
+  "France",
+  "China",
+  "Germany",
+  "Italy",
+  "India",
+  "Romania",
+  "Ireland",
+  "Netherlands",
+  "Not selected"
+];
+
 export default function Events() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selected, setSelected] = useState("");
   const [month, setMonth] = useState(months[0]);
   const [category, setCategory] = useState(categories[0]);
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState("Not selected");
   const [hasMoreEvents, setHasMoreEvents] = useState(true);
 
   const [page, setPage] = useState(0);
@@ -93,26 +110,32 @@ export default function Events() {
     setPage(page + 1);
     const data = await res.json();
     setEvents((events) => [...events, ...data.docs]);
-  
+
     // Check if there are more events
     if (data.docs.length === 0) {
       setHasMoreEvents(false);
     }
-  
-    setLoading(false);
-  };
 
-  const handlelocation = (e) => {
-    setLocation(e.target.value);
+    setLoading(false);
   };
 
   const handleadvanced = async () => {
     setLoading(true);
-    const params = new URLSearchParams({
-      month: month,
-      category: category,
-      location: location,
-    });
+    var params = "";
+    if (location === "Not selected") {
+      console.log("Not selected");
+      params = new URLSearchParams({
+        month: month,
+        category: category,
+        location: "",
+      });
+    } else {
+      params = new URLSearchParams({
+        month: month,
+        category: category,
+        location: location,
+      });
+    }
     const res = await fetch(
       `${host}/api/events/advancedsearch?${params}&page=0&size=20`
     );
@@ -174,12 +197,17 @@ export default function Events() {
                 <div className="container my-3">
                   <label className="form-label">Enter Location:</label>
                   <div className="input-group mb-3">
-                    <input
+                    {/* <input
                       type="text"
                       className="form-control"
                       placeholder="Search by location..."
                       onChange={handlelocation}
                       value={location}
+                    /> */}
+                    <Dropdown
+                      options={countries}
+                      name={location}
+                      onChange={setLocation}
                     />
                   </div>
                 </div>
@@ -284,15 +312,14 @@ export default function Events() {
           </div>
         ) : (
           <div className="text-center">
-  <button
-    className="btn btn-dark"
-    onClick={fetchmoreevents}
-    disabled={!hasMoreEvents}
-  >
-    {hasMoreEvents ? "Load More" : "No More Events"}
-  </button>
-</div>
-
+            <button
+              className="btn btn-dark"
+              onClick={fetchmoreevents}
+              disabled={!hasMoreEvents}
+            >
+              {hasMoreEvents ? "Load More" : "No More Events"}
+            </button>
+          </div>
         )}
       </div>
     </>

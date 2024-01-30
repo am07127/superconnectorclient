@@ -35,7 +35,7 @@ const ConferencesDetails = () => {
   ></hr> */}
 
       <img
-        src={event.image}
+        src= {event.image}
         alt="Description"
         style={{ width: '100%', height: '40vh'}}
       />

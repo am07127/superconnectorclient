@@ -5,6 +5,19 @@ import Eventcard from './eventcard';
 import './EventDetails.css';
 
 const EventDetails = () => {
+
+  const convertBufferToBase64 = (buffer) => {
+    let binary = "";
+    const bytes = new Uint8Array(buffer);
+    const len = bytes.byteLength;
+
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+
+    return window.btoa(binary);
+  };
+
   const [relevantEvents, setRelevantEvents] = useState([]);
   const location = useLocation();
   const { state } = location;
@@ -43,11 +56,18 @@ const EventDetails = () => {
     return <div>Loading...</div>; // or handle the case when event is undefined
   }
 
-  const  myimage = "https://source.unsplash.com/1600x400/?" + event.category;
+  var myimage = "";
+  try {
+    const base64Flag = `data:${event.image.contentType};base64,`;
+    const imageStr = convertBufferToBase64(event.image.data.data);
+    myimage = base64Flag + imageStr;
+  } catch (err) {
+    myimage = "https://source.unsplash.com/550x400/?" + event.category;
+  }
   
   return (
 <div className="event-details-container" style={{ marginTop: '100px', marginLeft: '60px', marginRight: '60px' }}>
-  <h1 className="text-dark py-3" style={{ marginTop: '100px' }}>{event.name}</h1>
+  <a href={event.website} target='_blank' rel='noreferrer'><h1 className="py-3" style={{ marginTop: '100px' }}>{event.name}</h1></a>
   <hr
     style={{
       marginTop: '5px',
@@ -81,7 +101,6 @@ const EventDetails = () => {
   </div>
 
   <p style={{ marginTop: '20px' }}>{event.description}</p>
-  <a style={{ marginTop: '20px', marginRight:'5px' }} href={event.website} target="_blank" rel="noreferrer">Learn More</a>
   <button type="button" className="btn btn-primary mr-2" style={{ backgroundColor: '#1d31d3' }} onClick={openConnectform}>Book a Connector</button>
   
   <h1 className="text-center text-dark py-3" style={{ marginTop: '30px' }}>

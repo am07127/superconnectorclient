@@ -9,6 +9,23 @@
   min-height: 40vh;
 }
 
+a {
+  text-decoration: none;
+}
+
+h1{
+  color: #000000;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+  font-weight: "bold";
+}
+
+h1:hover {
+  color: powderblue;
+}
+
+
+
 /* Responsive styles */
 @media (max-width: 767px) {
   .event-details-container .row {

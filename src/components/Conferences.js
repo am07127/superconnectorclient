@@ -93,12 +93,12 @@ export default function Conferences() {
   };
 
   return (
-    <div style={{backgroundColor:'darkgray'}}>
+    <div style={{backgroundColor:'#07064d'}}>
         <div
           className="bg-image py-2 text-center shadow-1-strong rounded"
         >
           
-          <h1 className="text-center text-dark pt-4">
+          <h1 className="text-center text-light pt-4">
             Superconnector X Partnerships
           </h1>
         </div>

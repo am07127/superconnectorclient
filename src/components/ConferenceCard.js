@@ -57,9 +57,6 @@ export default function ConferenceCard(props) {
           <i className="fas fa-map-marker-alt"></i> {event.location}
         </p> */}
 
-        <p className="text-primary fst-italic" style={{ fontSize: "14px" }}>
-          <i className="fas fa-calendar-alt"></i> {event.date}
-        </p>
 
         
       </div>

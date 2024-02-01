@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "./Services.css";
+import {  useNavigate } from "react-router";
 import ConferenceCard from "./ConferenceCard.js";
 const events = [
   {
@@ -67,29 +68,14 @@ const categories = [
 ];
 
 export default function Conferences() {
-  const [filteredEvents, setFilteredEvents] = useState(events);
-  const [selected, setSelected] = useState("");
-  const [month, setMonth] = useState(months[0]);
+  const navigate = useNavigate();
 
-  // Handler
-  const handleSearch = (e) => {
-    const searchTerm = e.target.value;
-
-    const filtered = events.filter((event) => {
-      return event.name.toLowerCase().startsWith(searchTerm.toLowerCase());
-    });
-
-    setFilteredEvents(filtered);
-  };
-
-  const handleDate = (e) => {
-    const date = e.target.value;
-
-    const filtered = events.filter((event) => {
-      return event.date === date;
-    });
-
-    setFilteredEvents(filtered);
+  const openAddConference = () => {
+    console.log("Selected Conference form");
+    // //implement logic to load event details page with booth support and book a connector forms
+    navigate(`/conferenceForm`);
+    //This form will also have related events
+    //pass appropriate props to the event details page
   };
 
   return (
@@ -101,6 +87,13 @@ export default function Conferences() {
           <h1 className="text-center text-light pt-4">
             Superconnector X Partnerships
           </h1>
+          <button
+                  type="button"
+                  className="btn btn-dark mx-2"
+                  onClick={openAddConference}
+                >
+                  Add conference
+                </button>
         </div>
       
       <div className="container py-3">

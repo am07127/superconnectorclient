@@ -7,10 +7,10 @@ import Events from "./components/events";
 import EventDetails from "./components/EventDetails";
 import ConnectorForm from "./components/ConnectorForm";
 import Login from "./components/login";
-import Conferences from "./components/Conferences";
 import EventForm from "./components/EventForm";
 import GenConnector from "./components/GenConnector";
 import ConferencesDetails from "./components/ConferencesDetails";
+import ConferenceForm from "./components/ConferenceForm";
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
         <Route exact path="/eventForm" element={<EventForm/>} />
         <Route exact path="/genConnect" element={<GenConnector/>} />
         <Route exact path="/conference/:eventID" element={<ConferencesDetails/>} />
-
+        <Route exact path="/conferenceForm" element={<ConferenceForm/>} />
       </Routes>
       <Footer />
     </div>

@@ -2,7 +2,7 @@ import React from "react";
 import Eventcard from "./eventcard";
 import { useState, useEffect, useRef } from "react";
 
-import { Navigate, useNavigate } from "react-router";
+import {  useNavigate } from "react-router";
 import _ from "lodash";
 import Dropdown from "./dropdown";
 import "./Services.css";

@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./scrollbar.css";
 
-const GenConnector = () => {
+const ConferenceForm = () => {
   const [formData, setFormData] = useState({
     eventName: "",
-    firstname: "",
-    lastname: "",
-    selection: "",
-    location:"",
-    date:"",
-    companyName: "",
-    email: "",
-    contactNumber: "",
+    website: "",
+    facebook: "",
+    linkedin: "",
+    instagram: "",
+    organizer: "",
+    description: "",
+    num: "", 
+    location: "",
+    date: ""
   });
 
+  useEffect(() => {
+    // Scroll to the top of the page after the component is mounted
+    window.scrollTo(0, 0);
+  }, []); 
   const capitalizeEachWord = (inputString) => {
     // Split the input string into an array of words
     const words = inputString.split(' ');
@@ -45,7 +50,7 @@ const GenConnector = () => {
     return; // Stop further execution if the format is not valid
     }
     try {
-      const apiUrl = 'https://super-connector.onrender.com/api/connectors/addconnector';
+      const apiUrl = 'https://super-connector.onrender.com/api/conferences/addconference';
   
       const updatedFormData = {
         ...formData,
@@ -64,16 +69,16 @@ const GenConnector = () => {
         alert('Connector added successfully!');
   
         setFormData({
-          eventName: "",
-          firstname: "",
-          lastname: "",
-          companyName: "",
-          email: "",
-          contactNumber: "",
-          selection: "",
-          date:"",
-          location:""
-    
+            eventName: "",
+            website: "",
+            facebook: "",
+            linkedin: "",
+            instagram: "",
+            organizer: "",
+            description: "",
+            num: "", 
+            location: "",
+            date: ""
         });
 
       } else {
@@ -141,12 +146,12 @@ const GenConnector = () => {
             <h3
               style={{ color: "white", textAlign: "center" }}
             >
-              BOOK A CONNECTOR
+              ADD A CONFERENCE
             </h3>
             
           </div>
           <div className="row">
-          <div className="col-md-4 mb-3">
+          <div className="col-md-6 mb-3">
             <label
               htmlFor="eventName"
               className="form-label"
@@ -165,11 +170,8 @@ const GenConnector = () => {
             />
             
           </div>
-          <div className="col-md-4 mb-3">
-            <label htmlFor="startDate" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5"}}>Date:</label>
-            <input type="date" className="form-control" id="date" name="date" value={formData.date} onChange={handleChange} required />
-          </div>
-          <div className="col-md-4 mb-3">
+          
+          <div className="col-md-6 mb-3">
             <label
               htmlFor="location"
               className="form-label"
@@ -189,57 +191,95 @@ const GenConnector = () => {
             />
               </div>
             </div>
-            <div className="mb-3">
+            <div className="row">
+            <div className="col-md-4 mb-3">
             <label
-              htmlFor="companyName"
+              htmlFor="facebook"
               className="form-label"
               style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}
             >
-              Company Name:
+              Facebook:
             </label>
             <input
               type="text"
               className="form-control"
-              id="companyName"
-              name="companyName"
-              value={formData.companyName}
+              id="facebook"
+              name="facebook"
+              value={formData.facebook}
               onChange={handleChange}
-              required
+              
             />
+          </div>
+          <div className="col-md-4 mb-3">
+            <label
+              htmlFor="instagram"
+              className="form-label"
+              style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}
+            >
+              Instagram:
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="instagram"
+              name="instagram"
+              value={formData.instagram}
+              onChange={handleChange}
+              
+            />
+          </div>
+          <div className="col-md-4 mb-3">
+            <label
+              htmlFor="linkedin"
+              className="form-label"
+              style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}
+            >
+              LinkedIn:
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="linkedin"
+              name="linkedin"
+              value={formData.linkedin}
+              onChange={handleChange}
+              
+            />
+          </div>
           </div>
           <div className="row">
             <div className="col-md-6 mb-3">
               <label
-                htmlFor="firstname"
+                htmlFor="organizer"
                 className="form-label"
                 style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}
               >
-                First Name:
+                Contact Person:
               </label>
               <input
                 type="text"
                 className="form-control"
-                id="firstname"
-                name="firstname"
-                value={formData.firstname}
+                id="organizer"
+                name="organizer"
+                value={formData.organizer}
                 onChange={handleChange}
                 required
               />
             </div>
             <div className="col-md-6 mb-3">
               <label
-                htmlFor="lastname"
+                htmlFor="website"
                 className="form-label"
                 style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}
               >
-                Last Name:
+                Website:
               </label>
               <input
                 type="text"
                 className="form-control"
-                id="lastname"
-                name="lastname"
-                value={formData.lastname}
+                id="website"
+                name="website"
+                value={formData.website}
                 onChange={handleChange}
                 required
               />
@@ -249,28 +289,14 @@ const GenConnector = () => {
 
           
           <div className="row">
-            <div className="col-md-6">
-              <label
-                htmlFor="email"
-                className="form-label"
-                style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}
-              >
-                Email:
-              </label>
-              <input
-                type="email"
-                className="form-control"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
+          <div className="col-md-6 mb-3">
+            <label htmlFor="startDate" className="form-label" style={{ color: "white", fontWeight: "bold", opacity: "1.5"}}>Date:</label>
+            <input type="date" className="form-control" id="date" name="date" value={formData.date} onChange={handleChange} required />
+          </div>
 
             <div className="col-md-6">
               <label
-                htmlFor="contactNumber"
+                htmlFor="num"
                 className="form-label"
                 style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}
               >
@@ -279,10 +305,10 @@ const GenConnector = () => {
               <input
                 type="tel"
                 className="form-control"
-                id="contactNumber"
-                name="contactNumber"
+                id="num"
+                name="num"
                 pattern="[0-9]*"
-                value={formData.contactNumber}
+                value={formData.num}
                 onChange={handleChange}
                 required
               />
@@ -291,34 +317,29 @@ const GenConnector = () => {
               </div>
             </div>
           </div>
-
-          <div className="mb-3">
-            <div className="mb-3">
-              <label
-                htmlFor="selection"
+          <div className="event-description-box">
+          <label
+                htmlFor="description"
                 className="form-label"
                 style={{ color: "white", fontWeight: "bold", opacity: "1.5" }}
               >
-                Booking Type:
+                Event Description:
               </label>
-              <select
-                className="form-select"
-                id="selection"
-                name="selection"
-                value={formData.selection}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Select an option</option>
-                <option value="booth-support">Booth Support</option>
-                <option value="book-connector">Book a Connector</option>
-              </select>
-            </div>
-          </div>
+      <textarea
+        id="description"
+        name="description"
+        value={formData.description}
+        onChange={handleChange}
+        placeholder="Enter event description..."
+        className="form-control"
+        rows="5"
+        required
+      ></textarea>
+      </div>
           <button
             type="submit"
             className="btn btn-primary d-block mx-auto"
-            style={{ backgroundColor: "#1d31d3", borderColor: "#1d31d3" }}
+            style={{ backgroundColor: "#1d31d3", borderColor: "#1d31d3", marginTop:'30px' }}
           >
             Submit
           </button>
@@ -328,4 +349,4 @@ const GenConnector = () => {
   );
 };
 
-export default GenConnector;
+export default ConferenceForm;

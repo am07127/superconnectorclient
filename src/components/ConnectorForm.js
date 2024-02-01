@@ -11,6 +11,8 @@ const ConnectorForm = () => {
     companyName: "",
     email: "",
     contactNumber: "",
+    location:"",
+    date:""
   });
 
   const location = useLocation();
@@ -36,9 +38,13 @@ const ConnectorForm = () => {
       const apiUrl = 'https://super-connector.onrender.com/api/connectors/addconnector';
   
       const eventname = event.name;
+      const date = event.startDate;
+      const location = event.location;
       const updatedFormData = {
         ...formData,
-        eventName: eventname
+        eventName: eventname,
+        location: location,
+        date: date
       };
   
       const response = await fetch(apiUrl, {

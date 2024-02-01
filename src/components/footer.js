@@ -3,7 +3,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function Footer() {
   return (
-    <div>
+    <div id="contactus">
       <footer
         className="text-center text-lg-start text-white pt-4"
         style={{backgroundColor: "#1c2331"}}
@@ -13,16 +13,14 @@ function Footer() {
         <section className="">
           <div className="container text-center text-md-start mt-5">
             <div className="row mt-3">
-              <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                <h6 className="text-uppercase fw-bold">Company name</h6>
+              <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 text-center">
+                <h6 className="text-uppercase fw-bold">Super Connector Service</h6>
                 <hr
                   className="mb-4 mt-0 d-inline-block mx-auto"
                   style={{width: "60px", backgroundColor: "#7c4dff", height: "2px"}}
                 />
                 <p>
-                  Here you can use rows and columns to organize your footer
-                  content. Lorem ipsum dolor sit amet, consectetur adipisicing
-                  elit.
+                  Contact us for more information about our services 
                 </p>
               </div>
 
@@ -64,13 +62,10 @@ function Footer() {
                   <i className="fas fa-home mr-3"></i> New York, NY 10012, US
                 </p>
                 <p>
-                  <i className="fas fa-envelope mr-3"></i> info@example.com
+                  <i className="fas fa-envelope mr-3"></i> emmy@superconnectorservice.com
                 </p>
                 <p>
-                  <i className="fas fa-phone mr-3"></i> + 01 234 567 88
-                </p>
-                <p>
-                  <i className="fas fa-print mr-3"></i> + 01 234 567 89
+                  <i className="fas fa-envelope mr-3"></i> sales@superconnectorservice.com
                 </p>
               </div>
             </div>

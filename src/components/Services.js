@@ -123,7 +123,7 @@ function Services() {
         </div>
       </div>
 
-      <div className="services py-5" id="services">
+      <div className="services" id="services">
         <div ref={containerRef} className="container mt-3 pt-5">
           <div className="row">
             <h1 className="text-center py-3">Our Services</h1>
@@ -131,7 +131,7 @@ function Services() {
         </div>
 
         {/* Services Section */}
-        <div ref={secondRef} className="container py-3">
+        <div ref={secondRef} className="container pb-5">
           <div className="row">
             <div className="col-md-6 border-end border-4 border-white">
               <div

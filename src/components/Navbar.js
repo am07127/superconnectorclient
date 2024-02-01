@@ -46,25 +46,13 @@ const NavBar = () => {
               </li>
               <li className="nav-item">
               {isHomePage ? (
-                  <a className="nav-link" href="#eventsection">
-                    Events
+                  <a className="nav-link" href="#aboutus">
+                    About 
                   </a>
                 ) : (
                   // If on a separate page, navigate to home and use a hash link
-                  <Link className="nav-link" to="/#eventsection" >
-                    Events
-                  </Link>
-                )}
-              </li>
-              <li className="nav-item">
-              {isHomePage ? (
-                  <a className="nav-link" href="#conferencesection">
-                    Conferences
-                  </a>
-                ) : (
-                  // If on a separate page, navigate to home and use a hash link
-                  <Link className="nav-link" to="/#conferencesection" >
-                    Conferences
+                  <Link className="nav-link" to="/#aboutus">
+                    About 
                   </Link>
                 )}
               </li>
@@ -82,15 +70,32 @@ const NavBar = () => {
               </li>
               <li className="nav-item">
               {isHomePage ? (
-                  <a className="nav-link" href="#aboutus">
-                    About Us
+                  <a className="nav-link" href="#eventsection">
+                    Events
                   </a>
                 ) : (
                   // If on a separate page, navigate to home and use a hash link
-                  <Link className="nav-link" to="/#aboutus">
-                    About Us
+                  <Link className="nav-link" to="/#eventsection" >
+                    Events
                   </Link>
                 )}
+              </li>
+              <li className="nav-item">
+              {isHomePage ? (
+                  <a className="nav-link" href="#conferencesection">
+                    Partnerships
+                  </a>
+                ) : (
+                  // If on a separate page, navigate to home and use a hash link
+                  <Link className="nav-link" to="/#conferencesection" >
+                    Partnerships
+                  </Link>
+                )}
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#contactus">
+                  Contact Us
+                </a>
               </li>
             </ul>
           </div>

@@ -58,6 +58,7 @@ export default function Events() {
   const [category, setCategory] = useState(categories[0]);
   const [location, setLocation] = useState("Not selected");
   const [hasMoreEvents, setHasMoreEvents] = useState(true);
+  const [initialload, setInitialload] = useState(false);
 
   const [page, setPage] = useState(0);
   const inputRef = useRef();
@@ -73,9 +74,11 @@ export default function Events() {
     //pass appropriate props to the event details page
   };
   const fetchevents = async () => {
+    setInitialload(true);
     const res = await fetch(`${host}/api/events/getevents?page=${page}`);
     const data = await res.json();
     setEvents(data.docs);
+    setInitialload(false);
   };
 
   useEffect(() => {
@@ -225,6 +228,7 @@ export default function Events() {
                 type="button"
                 className="btn btn-primary"
                 onClick={handleadvanced}
+                data-bs-dismiss="modal"
               >
                 Search
               </button>
@@ -236,17 +240,17 @@ export default function Events() {
         <div
           className="bg-image p-5 text-center shadow-1-strong rounded mb-5"
           style={{
-            backgroundImage: `url(${process.env.PUBLIC_URL}/hero.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
+            backgroundColor: "darkgray",
           }}
         >
-          <h1 className="text-center text-light my-5">
-            FIND YOUR <span className="light-orange">EVENT</span>
+          <h1 className="text-center text-dark mb-4">
+            Find Your Event
           </h1>
           <div className="container">
-            <div className="row">
-              <div className="col-12">
+            <div className="row justify-content-md-center">
+              <div className="col-md-6">
                 <div className="input-group mb-3">
                   <input
                     type="text"
@@ -257,7 +261,7 @@ export default function Events() {
                   />
                   <div className="input-group-append">
                     <button
-                      className="btn btn-light"
+                      className="btn btn-dark"
                       type="button"
                       id="button-addon2"
                       onClick={handlefinalsearch}
@@ -266,6 +270,7 @@ export default function Events() {
                         className="search-icon"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 512 512"
+                        fill='white'
                       >
                         <path d="M500.3 443.7l-119.7-119.7c27.22-40.41 40.65-90.9 33.46-144.7C401.8 87.79 326.8 13.32 235.2 1.723C99.01-15.51-15.51 99.01 1.724 235.2c11.6 91.64 86.08 166.7 177.6 178.9c53.8 7.189 104.3-6.236 144.7-33.46l119.7 119.7c15.62 15.62 40.95 15.62 56.57 0C515.9 484.7 515.9 459.3 500.3 443.7zM79.1 208c0-70.58 57.42-128 128-128s128 57.42 128 128c0 70.58-57.42 128-128 128S79.1 278.6 79.1 208z" />
                       </svg>
@@ -275,17 +280,17 @@ export default function Events() {
                 <button
                   type="button"
                   className="btn btn-dark mx-2"
-                  onClick={openAddEvent}
-                >
-                  Add event
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-dark mx-2"
                   data-bs-toggle="modal"
                   data-bs-target="#exampleModal"
                 >
                   Advanced Search
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-dark mx-2"
+                  onClick={openAddEvent}
+                >
+                  Add event
                 </button>
               </div>
             </div>
@@ -294,13 +299,21 @@ export default function Events() {
       </div>
       <div className="container my-3">
         <div className="row">
-          {events
-            .filter((event) => event.isApproved)
-            .map((event) => (
-              <div className="col-md-3 my-2" key={event._id}>
-                <Eventcard event={event} />
+          {initialload ? (
+            <div className="text-center">
+              <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
               </div>
-            ))}
+            </div>
+          ) : (
+            events
+              .filter((event) => event.isApproved)
+              .map((event) => (
+                <div className="col-md-3 my-2" key={event._id}>
+                  <Eventcard event={event} />
+                </div>
+              ))
+          )}
         </div>
       </div>
       <div className="container my-3">

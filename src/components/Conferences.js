@@ -93,49 +93,17 @@ export default function Conferences() {
   };
 
   return (
-    <>
-      <div>
+    <div style={{backgroundColor:'darkgray'}}>
         <div
-          className="bg-image p-5 text-center shadow-1-strong rounded mb-5"
-          style={{
-            backgroundImage: `url(${process.env.PUBLIC_URL}/hero.jpg)`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
+          className="bg-image py-2 text-center shadow-1-strong rounded"
         >
           
-          <h1 className="text-center text-light my-5">
-            SUPERCONNECTOR <span className="light-orange">X </span>CONFERENCES
+          <h1 className="text-center text-dark pt-4">
+            Superconnector X Partnerships
           </h1>
-          {/* <div className="container">
-            <div className="row">
-              <div className="col-12">
-                <div className="input-group mb-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Search by keyword..."
-                    onChange={handleSearch}
-                  />
-                  <div className="input-group-append">
-                    <Dropdown
-                      options={categories}
-                      name="Category"
-                      onChange={setSelected}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div> */}
-            {/* <div className="row">
-              <div className="col-12">
-                <Dropdown options={months} name="Month" onChange={setMonth} />
-              </div>
-            </div>
-          </div> */}
         </div>
-      </div>
-      <div className="container my-3">
+      
+      <div className="container py-3">
         <div className="row">
           {events.map((event) => (
             <div className="col-md-3 my-2" key={event.id}>
@@ -144,6 +112,6 @@ export default function Conferences() {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }

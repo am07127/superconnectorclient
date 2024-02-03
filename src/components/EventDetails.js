@@ -33,7 +33,7 @@ const EventDetails = () => {
     if (event) {
     const fetchRelatedEvents = async () => {
       try {
-        const response = await fetch(`${host}/api/events/relatedevents?category=${event.category}&location=${event.location}&date=${event.date}`);
+        const response = await fetch(`${host}/api/events/relatedevents?category=${event.category}&location=${event.location}&date=${event.startDate}&eventName=${event.name}`);
         const data = await response.json();
         console.log(data);
         setRelevantEvents(data.related_events);

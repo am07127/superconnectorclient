@@ -40,7 +40,7 @@ export default function Eventcard(props) {
   };
 
   return (
-    <div className="card">
+    <div className="card" style={{fontFamily:'Poppins'}}>
       <img
         src={myimage}
         className="card-img-top"

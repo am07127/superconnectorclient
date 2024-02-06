@@ -66,7 +66,7 @@ const EventDetails = () => {
   }
   
   return (
-<div className="event-details-container" style={{ marginTop: '100px', marginLeft: '60px', marginRight: '60px' }}>
+<div className="event-details-container" style={{ marginTop: '100px', marginLeft: '60px', marginRight: '60px',fontFamily:'Poppins' }}>
   <a href={event.website} target='_blank' rel='noreferrer'><h1 className="py-3" style={{ marginTop: '100px' }}>{event.name}</h1></a>
   <hr
     style={{

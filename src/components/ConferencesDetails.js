@@ -8,7 +8,7 @@ const ConferencesDetails = () => {
   const location = useLocation();
   const { state } = location;
   const host = "https://super-connector.onrender.com";
-  const { event } = state || {};
+  const { event, myimage } = state || {};
   useEffect(() => {
     window.scrollTo(0, 0);
     // Function to fetch related events from the backend API
@@ -22,7 +22,7 @@ const ConferencesDetails = () => {
 
   
   return (
-<div className="conference-details-container" style={{ marginTop: '100px', marginLeft: '60px', marginRight: '60px' }}>
+<div className="conference-details-container" style={{ marginTop: '100px', marginLeft: '60px', marginRight: '60px', fontFamily:'Poppins' }}>
 
   {/* <h4 className="text-dark py-3">{event.subHeading}</h4>
   <hr
@@ -35,15 +35,15 @@ const ConferencesDetails = () => {
   ></hr> */}
 
       <img
-        src= {event.image}
+        src= {myimage}
         alt="Description"
-        style={{ width: '100%', height: '40vh'}}
+        style={{ width: '100%', maxHeight:"500px", objectFit: 'cover', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}
       />
 
    
 
   <h1 className="text-center text-dark my-4">
-            SUPERCONNECTOR <span className="light-orange">X </span>{event.name}
+            SUPERCONNECTOR <span className="light-orange">X </span>{event.eventName}
           </h1>
           <hr
     style={{

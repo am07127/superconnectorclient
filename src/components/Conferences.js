@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import "./Services.css";
-import {  useNavigate } from "react-router";
+import {  useNavigate} from "react-router";
+import { useEffect } from "react";
 import ConferenceCard from "./ConferenceCard.js";
 const events = [
   {
@@ -78,27 +79,50 @@ export default function Conferences() {
     //pass appropriate props to the event details page
   };
 
+  useEffect(() => {
+    getconferences();
+  }, []);
+
+  const [conference, setConference] = useState([]);
+  const [page, setPage] = useState(0);
+
+  const host = "https://super-connector.onrender.com";
+  
+
+  const getconferences = async () => {
+    try {
+      const response = await fetch(`${host}/api/conferences/getconferences?page=${page}`);
+      const data = await response.json();
+      setConference(data);
+    }
+    catch (error) {
+      console.error(error);
+    }
+
+  };
+
+
   return (
     <div style={{backgroundColor:'#07064d'}}>
         <div
           className="bg-image py-2 text-center shadow-1-strong rounded"
         >
           
-          <h1 className="text-center text-light pt-4">
+          <h1 className="text-center text-light pt-4" style={{fontFamily:'Poppins'}}>
             Superconnector X Partnerships
           </h1>
           <button
                   type="button"
-                  className="btn btn-dark mx-2"
+                  className="btn btn-dark mx-2 my-2"
                   onClick={openAddConference}
                 >
-                  Add conference
+                  Partner with us
                 </button>
         </div>
       
       <div className="container py-3">
         <div className="row">
-          {events.map((event) => (
+          {conference.map((event) => (
             <div className="col-md-3 my-2" key={event.id}>
               <ConferenceCard event={event} />
             </div>

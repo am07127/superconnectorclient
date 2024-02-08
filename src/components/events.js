@@ -20,6 +20,7 @@ const months = [
   "October",
   "November",
   "December",
+  "Not selected"
 ];
 const categories = [
   "Tech",
@@ -31,6 +32,8 @@ const categories = [
   "Movies",
   "Cars",
   "Western",
+  "Beauty",
+  "Not selected"
 ];
 
 const countries = [
@@ -54,8 +57,8 @@ export default function Events() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selected, setSelected] = useState("");
-  const [month, setMonth] = useState(months[0]);
-  const [category, setCategory] = useState(categories[0]);
+  const [month, setMonth] = useState("Not selected");
+  const [category, setCategory] = useState("Not selected");
   const [location, setLocation] = useState("Not selected");
   const [hasMoreEvents, setHasMoreEvents] = useState(true);
   const [initialload, setInitialload] = useState(false);
@@ -127,17 +130,53 @@ export default function Events() {
     var params = "";
     if (location === "Not selected") {
       console.log("Not selected");
-      params = new URLSearchParams({
-        month: month,
-        category: category,
-        location: "",
-      });
+      if (month === "Not selected" && category === "Not selected") {
+        params = new URLSearchParams();
+      } else if (month === "Not selected") {
+        params = new URLSearchParams({
+          category: category,
+          location:"",
+          month:"",
+        });
+      } else if (category === "Not selected") {
+        params = new URLSearchParams({
+          month: month,
+          location:"",
+          category:"",
+        });
+      } else {
+        params = new URLSearchParams({
+          month: month,
+          category: category,
+          location:"",
+        });
+      }
     } else {
-      params = new URLSearchParams({
-        month: month,
-        category: category,
-        location: location,
-      });
+      if (month === "Not selected" && category === "Not selected") {
+        params = new URLSearchParams({
+          location: location,
+          month:"",
+          category:"",
+        });
+      } else if (month === "Not selected") {
+        params = new URLSearchParams({
+          location: location,
+          category: category,
+          month:"",
+        });
+      } else if (category === "Not selected") {
+        params = new URLSearchParams({
+          location: location,
+          month: month,
+          category:"",
+        });
+      } else {
+        params = new URLSearchParams({
+          location: location,
+          month: month,
+          category: category,
+        });
+      }
     }
     const res = await fetch(
       `${host}/api/events/advancedsearch?${params}&page=0&size=20`
@@ -241,8 +280,7 @@ export default function Events() {
           className="bg-image p-5 text-center shadow-1-strong rounded mb-5"
           style={{
             backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundColor: "darkgray",
+            backgroundPosition: "center"
           }}
         >
           <h1 className="text-center text-dark mb-4">

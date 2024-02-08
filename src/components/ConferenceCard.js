@@ -50,7 +50,7 @@ export default function ConferenceCard(props) {
 
       <div className="card-body text-center">
         <h5 className="card-title text-center fw-bold">
-          {event.eventName.length > 18 ? event.name.substring(0, 18) + "..." : event.eventName}
+          {event.eventName.length > 18 ? event.eventName.substring(0, 18) + "..." : event.eventName}
         </h5>
 
         {/* <p className="text-muted fst-italic" style={{ fontSize: "14px" }}>

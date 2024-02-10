@@ -81,7 +81,7 @@ const EventDetails = () => {
       <img
         src={myimage}
         alt="Description"
-        style={{ width: '100%', height: '40vh'}}
+        style={{ width: '100%', maxHeight:"500px", objectFit: 'cover', objectPosition: 'center', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}
       />
     </div>
    <div className="col-lg-4 custom-bg-grey p-3" >

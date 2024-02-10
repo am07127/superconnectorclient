@@ -14,9 +14,10 @@ a {
 }
 
 h1{
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   text-align: center;
   font-weight: "bold";
+  color: black;
 }
 
 h1:hover {

@@ -91,7 +91,7 @@ function Services() {
             <div className="carousel-overlay"></div>
             <div className="carousel-caption d-block d-sm-block mb-5">
               <strong>
-                <h1>
+                <h1 style={{color:'white', fontFamily:'Poppins', fontWeight:'bold'}}>
                   GLOBAL PRESENCE AT{" "}
                   <span className="white">NETWORKING EVENTS</span>
                 </h1>
@@ -126,7 +126,7 @@ function Services() {
       <div className="services" id="services">
         <div ref={containerRef} className="container mt-3 pt-5">
           <div className="row">
-            <h1 className="text-center py-3">Our Services</h1>
+            <h1 className="text-center text-light py-3">Our Services</h1>
           </div>
         </div>
 

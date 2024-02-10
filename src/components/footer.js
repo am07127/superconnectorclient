@@ -20,37 +20,11 @@ function Footer() {
                   style={{width: "60px", backgroundColor: "#7c4dff", height: "2px"}}
                 />
                 <p>
-                  Contact us for more information about our services 
+                Super Connector provides representation to companies at events. If you, or your team, are unable to attend an event, Book a Connector with Super Connector for an amazing experience.
                 </p>
               </div>
 
-              <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                <h6 className="text-uppercase fw-bold">Useful links</h6>
-                <hr
-                  className="mb-4 mt-0 d-inline-block mx-auto"
-                  style={{width: "60px", backgroundColor: "#7c4dff", height: "2px"}}
-                />
-                <p>
-                  <a href="#!" className="text-white">
-                    Your Account
-                  </a>
-                </p>
-                <p>
-                  <a href="#!" className="text-white">
-                    Become an Affiliate
-                  </a>
-                </p>
-                <p>
-                  <a href="#!" className="text-white">
-                    Shipping Rates
-                  </a>
-                </p>
-                <p>
-                  <a href="#!" className="text-white">
-                    Help
-                  </a>
-                </p>
-              </div>
+              
 
               <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                 <h6 className="text-uppercase fw-bold">Contact</h6>
@@ -59,13 +33,16 @@ function Footer() {
                   style={{width: "60px", backgroundColor: "#7c4dff", height: "2px"}}
                 />
                 <p>
-                  <i className="fas fa-home mr-3"></i> New York, NY 10012, US
+                  <i className="fas fa-home mr-3"></i> Austin, Texas, USA
                 </p>
                 <p>
                   <i className="fas fa-envelope mr-3"></i> emmy@superconnectorservice.com
                 </p>
                 <p>
                   <i className="fas fa-envelope mr-3"></i> sales@superconnectorservice.com
+                </p>
+                <p>
+                  <i className="fas fa-phone mr-3"></i> +1 512 717 8707
                 </p>
               </div>
             </div>
@@ -85,19 +62,13 @@ function Footer() {
           </div>
 
           <div>
-            <a href="" className="text-white me-4">
+            <a href="https://www.facebook.com/superconnectorservice?mibextid=2JQ9oc" className="text-white me-4">
               <i className="fab fa-facebook-f"></i>
             </a>
-            <a href="" className="text-white me-4">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="" className="text-white me-4">
-              <i className="fab fa-google"></i>
-            </a>
-            <a href="" className="text-white me-4">
+            <a href="https://www.instagram.com/superconnectorservice?igsh=MW5vZ3A5cWRucnVnYg==" className="text-white me-4">
               <i className="fab fa-instagram"></i>
             </a>
-            <a href="" className="text-white me-4">
+            <a href="https://www.linkedin.com/company/super-connector-service/" className="text-white me-4">
               <i className="fab fa-linkedin"></i>
             </a>
           </div>

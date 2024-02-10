@@ -42,8 +42,8 @@ const ConferencesDetails = () => {
 
    
 
-  <h1 className="text-center text-dark my-4">
-            SUPERCONNECTOR <span className="light-orange">X </span>{event.eventName}
+  <h1 className="text-center text-dark my-4" style={{fontWeight:'bold'}}>
+            Super Connector <span style={{color:'darkblue'}}>X </span>{event.eventName}
           </h1>
           <hr
     style={{

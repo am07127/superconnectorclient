@@ -34,7 +34,11 @@ const GenConnector = () => {
       [name]: value,
     }));
   };
-
+  
+  const prevwindow = () => {
+    window.history.back();
+  };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const capitalizedEvent = capitalizeEachWord(formData.eventName);
@@ -90,6 +94,21 @@ const GenConnector = () => {
       className="position-relative bg-image p-5 shadow-1-strong"
       style={{ marginTop: "30px" }}
     >
+      <button
+        className="btn btn-primary d-block mx-auto"
+        onClick={prevwindow}
+        style={{
+          zIndex: "1000",
+          position: "absolute",
+          top: "70px",
+          left: "40px",
+          backgroundColor: "#1d31d3",
+          borderColor: "#1d31d3",
+          color: "white",
+        }}
+      >
+        <i className="fas fa-arrow-left"></i> Go Back
+      </button>
       <div
         className="overlay"
         style={{
